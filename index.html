@@ -91,8 +91,24 @@
     /* REMOVED 'fixed' so the image moves when you scroll */
     background-attachment: scroll; 
         }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 4rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.25rem; color: #cbd5e1; max-width: 800px; margin: 0 auto 45px; line-height: 1.6; }
+        .hero h1 { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 4rem; 
+    margin-bottom: 20px; 
+    /* Adding a black shadow to make white text pop */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); 
+    color: #ffffff;
+}
+
+.hero p { 
+    font-size: 1.25rem; 
+    color: #ffffff; /* Switched to pure white for better visibility */
+    max-width: 800px; 
+    margin: 0 auto 45px; 
+    line-height: 1.6; 
+    /* Adding shadow to the description as well */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9); 
+}
 
         /* Section Layout */
         .section-container { padding: 100px 10%; }
