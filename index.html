@@ -71,9 +71,23 @@
 
         /* Hero Section */
         .hero {
-            padding: 160px 10% 120px;
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; background-position: center; color: white; text-align: center;
+    padding: 160px 10% 120px;
+    background: 
+        /* Subtle German flag colors: Black, Red, Gold at low opacity */
+        linear-gradient(
+            to bottom, 
+            rgba(0, 0, 0, 0.75) 0%,      
+            rgba(255, 0, 0, 0.15) 50%,   
+            rgba(255, 204, 0, 0.15) 100% 
+        ), 
+        /* Professional Engineering/Blueprint Image */
+        url('https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=2070&auto=format&fit=crop');
+    
+    background-size: cover; 
+    background-position: center; 
+    color: white; 
+    text-align: center;
+    background-attachment: fixed;
         }
         .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 4rem; margin-bottom: 20px; }
         .hero p { font-size: 1.25rem; color: #cbd5e1; max-width: 800px; margin: 0 auto 45px; line-height: 1.6; }
