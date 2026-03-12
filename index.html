@@ -403,5 +403,31 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
+    <script>
+document.querySelector('form').addEventListener('submit', function(e) {
+    const emailInput = document.querySelector('input[type="email"]');
+    const emailValue = emailInput.value;
+    
+    // Simple check: Does it have an @ and a dot?
+    if (!emailValue.includes('@') || !emailValue.includes('.')) {
+        e.preventDefault(); // Stop the form from sending
+        
+        // Change the button text to show the error
+        const submitBtn = document.querySelector('.btn-submit');
+        const originalText = submitBtn.innerText;
+        
+        submitBtn.innerText = "⚠️ INVALID EMAIL - TRY AGAIN";
+        submitBtn.style.background = "#ff4d4d"; // Turn red for the error
+        submitBtn.style.color = "#ffffff";
+        
+        // Reset the button after 3 seconds
+        setTimeout(() => {
+            submitBtn.innerText = originalText;
+            submitBtn.style.background = "#FFCC00"; // Back to German Gold
+            submitBtn.style.color = "#000000";
+        }, 3000);
+    }
+});
+</script>
 </body>
 </html>
