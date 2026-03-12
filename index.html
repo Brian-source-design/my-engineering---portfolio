@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineer Brian Magothe | Portfolio</title>
-    <meta name="description" content="Professional portfolio of Brian Magothe. Expert in Civil Engineering, AutoCAD designs, and Graphic Design.">
+    <title>Engineer Brian Magothe | Engineering, Design & German Tutor</title>
+    <meta name="description" content="Official portfolio of Brian Magothe. Expert in Civil Engineering, AutoCAD designs, Graphic Design, and fluent German Language Tutoring in Kenya.">
+    <meta name="keywords" content="Brian Magothe, Civil Engineer Kenya, AutoCAD expert, Graphic Designer Kenya, German Tutor Nairobi, Learn German Kenya">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Brian Magothe",
+      "jobTitle": "Civil Engineer & German Tutor",
+      "url": "https://your-username.github.io/my-portfolio/",
+      "sameAs": [
+        "https://www.linkedin.com/in/brian-mathenge-7b4a423b6",
+        "https://www.instagram.com/iconic._brian/"
+      ]
+    }
+    </script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #1e3a8a; /* Deep Engineering Blue */
-            --accent: #fbbf24;  /* Professional Gold */
+            --primary: #1e3a8a; 
+            --accent: #fbbf24;  
             --dark: #0f172a;
-            --light: #f8fafc;
+            --light: #f1f5f9;
             --text-gray: #64748b;
         }
 
         * { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--light); color: var(--dark); scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: var(--dark); scroll-behavior: smooth; }
 
         /* Navigation */
         nav {
@@ -49,23 +64,28 @@
         .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; margin-bottom: 10px; }
         .hero p { font-size: 1.2rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 35px; line-height: 1.6; }
 
-        /* Services Grid */
-        .section-container { padding: 80px 10%; }
-        .section-title { text-align: center; margin-bottom: 50px; font-family: 'Montserrat', sans-serif; font-size: 2rem; position: relative; }
-        .section-title::after { content: ''; display: block; width: 50px; height: 4px; background: var(--accent); margin: 10px auto; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: white; border-radius: 15px; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+        /* General Section Layout */
+        .section-container { padding: 80px 10%; background: var(--light); }
+        .section-title { text-align: center; margin-bottom: 50px; font-family: 'Montserrat', sans-serif; font-size: 2.2rem; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 5px; background: var(--accent); margin: 15px auto 0; }
         
-        .card-image { width: 100%; height: 200px; object-fit: cover; }
-        .card-content { padding: 25px; }
-        .card-content i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-        .card-content h3 { margin: 0 0 10px 0; font-family: 'Montserrat', sans-serif; }
-        .card-content p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
+        /* Expert Services Cards */
+        .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px;}
+        .expert-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; text-align: center; padding: 30px; transition: 0.3s;}
+        .expert-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .expert-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .expert-card h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px;}
+        .expert-card p { color: var(--text-gray); font-size: 0.95rem;}
+
+        /* Gallery Canvases */
+        .gallery-canvas { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 60px; border: 2px dashed #cbd5e1; }
+        .gallery-canvas h3 { font-family: 'Montserrat', sans-serif; color: var(--primary); text-align: center; margin-bottom: 30px; font-size: 1.5rem;}
+        .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .image-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; transition: 0.3s; cursor: pointer; background: #eee;}
+        .image-grid img:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
 
         /* Buttons */
-        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; }
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; font-size: 1rem;}
         .btn-primary { background: var(--primary); color: white; }
         .btn-whatsapp { background: #25d366; color: white; margin-top: 15px; display: inline-flex; align-items: center; gap: 10px; }
         .btn:hover { opacity: 0.9; transform: translateY(-2px); }
@@ -77,10 +97,11 @@
         .social-links a:hover { color: var(--accent); }
         .footer-note { color: #94a3b8; font-size: 0.85rem; margin-top: 20px; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .image-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
             nav { padding: 1rem 5%; }
-            .nav-links { display: none; } /* Simplified for mobile */
+            .nav-links { display: none; } 
         }
     </style>
 </head>
@@ -89,7 +110,8 @@
     <nav>
         <div class="logo">ENG. BRIAN MAGOTHE</div>
         <div class="nav-links">
-            <a href="#services">Services</a>
+            <a href="#about">Expertise</a>
+            <a href="#work">My Work</a>
             <a href="#contact">Contact</a>
             <a href="https://www.linkedin.com/in/brian-mathenge-7b4a423b6" target="_blank">LinkedIn</a>
         </div>
@@ -97,45 +119,58 @@
 
     <header class="hero">
         <h1>Brian Magothe</h1>
-        <p>Civil Engineering Specialist | AutoCAD Expert | Professional Graphic Designer</p>
-        <a href="#contact" class="btn btn-primary">Start a Project</a>
+        <p>Civil Engineering Specialist | AutoCAD Expert | Professional Graphic Designer | German Language Tutor</p>
+        <a href="#contact" class="btn btn-primary">Connect with Me</a>
     </header>
 
-    <div class="section-container" id="services">
-        <h2 class="section-title">Professional Expertise</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/12324687719495469463_0" alt="AutoCAD Design" class="card-image">
-                <div class="card-content">
-                    <i class="fas fa-drafting-compass"></i>
-                    <h3>AutoCAD Designs</h3>
-                    <p>Providing high-precision 2D/3D architectural drafting and structural modeling tailored to technical specifications.</p>
-                </div>
+    <div class="section-container" id="about">
+        <h2 class="section-title">My Expertise</h2>
+        <div class="expert-grid">
+            <div class="expert-card">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>AutoCAD & Engineering</h3>
+                <p>Providing high-precision 2D/3D architectural drafting and structural modeling tailored to technical specifications.</p>
             </div>
 
-            <div class="card">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/11693145963386820523_0" alt="Graphic Design" class="card-image">
-                <div class="card-content">
-                    <i class="fas fa-bezier-curve"></i>
-                    <h3>Graphic Design</h3>
-                    <p>Creative brand identity and visual communication. Clean, modern designs that make your business stand out.</p>
-                </div>
+            <div class="expert-card">
+                <i class="fas fa-bezier-curve"></i>
+                <h3>Graphic Design</h3>
+                <p>Creative brand identity and visual communication. Clean, modern designs that make your business stand out.</p>
             </div>
 
-            <div class="card">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15845753743333629561_0" alt="Civil Engineering" class="card-image">
-                <div class="card-content">
-                    <i class="fas fa-hard-hat"></i>
-                    <h3>Civil Engineering</h3>
-                    <p>Integrating technical engineering principles with modern project management for efficient infrastructure development.</p>
-                </div>
+            <div class="expert-card">
+                <i class="fas fa-language"></i>
+                <h3>German Tutor</h3>
+                <p>Fluent German language instructor. I hold certified proficiency to help you communicate effectively in professional and casual German.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container" id="work" style="background: white;">
+        <h2 class="section-title">Featured Project Work</h2>
+
+        <div class="gallery-canvas">
+            <h3>Graphic Design Portfolio</h3>
+            <div class="image-grid">
+                <img src="image_0.png" alt="Graphic Design Project 1 - Brian Magothe">
+                <img src="image_1.png" alt="Graphic Design Project 2 - Brian Magothe">
+                <img src="image_2.png" alt="Graphic Design Project 3 - Brian Magothe">
+            </div>
+        </div>
+
+        <div class="gallery-canvas">
+            <h3>AutoCAD & Structural Projects</h3>
+            <div class="image-grid">
+                <img src="image_3.png" alt="AutoCAD Structural Design 1">
+                <img src="image_4.png" alt="AutoCAD Architectural Plan 2">
+                <img src="image_5.png" alt="AutoCAD 3D Modeling 3">
             </div>
         </div>
     </div>
 
     <section id="contact" style="text-align: center; padding: 100px 10%; background: #f1f5f9;">
         <h2 class="section-title">Get In Touch</h2>
-        <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-gray);">Looking for a reliable engineer or designer? Let's discuss your next project directly via WhatsApp.</p>
+        <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-gray);">Looking for a reliable engineer, designer, or German language tutor? Let's discuss your next project directly via WhatsApp.</p>
         <a href="https://wa.me/254742409512" class="btn btn-whatsapp" target="_blank">
             <i class="fab fa-whatsapp"></i> Message me on WhatsApp
         </a>
@@ -148,7 +183,7 @@
             <a href="https://wa.me/254742409512" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
         <p>&copy; 2026 Engineer Brian Magothe. Professional Portfolio.</p>
-        <div class="footer-note">Built for performance and search engine visibility.</div>
+        <div class="footer-note">Optimized for Google Search Indexing.</div>
     </footer>
 
 </body>
