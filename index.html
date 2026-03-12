@@ -73,21 +73,23 @@
         .hero {
     padding: 160px 10% 120px;
     background: 
-        /* Official German Flag Colors: Black, Red, Gold */
+        /* German Flag Overlay: Black (top), Red (mid), Gold (bottom) */
         linear-gradient(
             to bottom, 
-            rgba(0, 0, 0, 0.8) 0%,        /* Deep Black at the top */
-            rgba(255, 0, 0, 0.3) 50%,     /* Stronger Red in the middle */
-            rgba(255, 204, 0, 0.4) 100%   /* Vibrant Gold at the bottom */
+            rgba(0, 0, 0, 0.85) 0%,      /* Black - strong for readability */
+            rgba(255, 0, 0, 0.3) 50%,     /* Red - medium opacity */
+            rgba(255, 204, 0, 0.4) 100%   /* Gold - medium opacity */
         ), 
-        /* High-quality Civil Engineering Image */
+        /* The Civil Engineering Image */
         url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop');
     
     background-size: cover; 
     background-position: center; 
     color: white; 
     text-align: center;
-    background-attachment: fixed;
+    
+    /* REMOVED 'fixed' so the image moves when you scroll */
+    background-attachment: scroll; 
         }
         .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 4rem; margin-bottom: 20px; }
         .hero p { font-size: 1.25rem; color: #cbd5e1; max-width: 800px; margin: 0 auto 45px; line-height: 1.6; }
