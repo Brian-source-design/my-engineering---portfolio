@@ -36,7 +36,6 @@ overflow-x: hidden;
     background: linear-gradient(to right, var(--de-black) 33.3%, var(--de-red) 33.3%, var(--de-red) 66.6%, var(--de-gold) 66.6%);
 }
 
-/* SCROLL REVEAL ANIMATION */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -149,10 +148,8 @@ body.dark-theme .progress-fill { background: var(--de-gold); }
     display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;
 }
 
-/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .menu-toggle { display: block; order: 3; }
-    .nav-right-controls { gap: 8px; }
     .nav-links {
         display: none; flex-direction: column; width: 100%; background: var(--card);
         position: absolute; top: 100%; left: 0; padding: 20px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -169,7 +166,6 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
 .social a:hover { color: var(--de-gold); }
 #scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--de-red); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; border: none; z-index: 1000; }
 
-/* STATUS STYLES */
 #form-status-container { display: none; text-align: center; padding: 40px 20px; background: var(--card); border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 </style>
 </head>
@@ -261,6 +257,10 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
             <div class="progress-bg"><div class="progress-fill" data-percent="95%"></div></div>
         </div>
         <div class="skill-bar-wrapper">
+            <div class="skill-info"><span data-en="Graphic Design (Branding)" data-de="Grafikdesign (Branding)">Graphic Design (Branding)</span><span>88%</span></div>
+            <div class="progress-bg"><div class="progress-fill" data-percent="88%"></div></div>
+        </div>
+        <div class="skill-bar-wrapper">
             <div class="skill-info"><span data-en="German Language Instruction" data-de="Deutschunterricht">German Language Instruction</span><span>90%</span></div>
             <div class="progress-bg"><div class="progress-fill" data-percent="90%"></div></div>
         </div>
@@ -275,6 +275,11 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
             <i class="fas fa-drafting-compass" style="font-size:2rem; color:var(--de-red); margin-bottom:15px;"></i>
             <h3 data-en="AutoCAD Engineering" data-de="AutoCAD Engineering">AutoCAD Engineering</h3>
             <p data-en="Precision engineering drafting for structural and construction designs." data-de="Präzisionszeichnungen für Tragwerks- und Konstruktionsentwürfe.">Precision engineering drafting for structural and construction designs.</p>
+        </div>
+        <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+            <i class="fas fa-palette" style="font-size:2rem; color:var(--de-red); margin-bottom:15px;"></i>
+            <h3 data-en="Graphic Design" data-de="Grafikdesign">Graphic Design</h3>
+            <p data-en="Modern branding, logo creation and visual communication design." data-de="Modernes Branding, Logo-Erstellung und visuelle Kommunikationsgestaltung.">Modern branding, logo creation and visual communication design.</p>
         </div>
         <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
             <i class="fas fa-language" style="font-size:2rem; color:var(--de-red); margin-bottom:15px;"></i>
@@ -292,14 +297,21 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
             <img src="projects/projects/project1.jpg">
             <div class="project-content">
                 <h3 data-en="Brand Identity Design" data-de="Markenidentität Design">Brand Identity Design</h3>
-                <p data-en="Complete branding project including logo design." data-de="Komplettes Branding-Projekt inklusive Logo-Design.">Complete branding project including logo design.</p>
+                <p data-en="Complete branding project including logo design and digital assets." data-de="Komplettes Branding-Projekt inklusive Logo-Design und digitalen Assets.">Complete branding project including logo design and digital assets.</p>
             </div>
         </div>
         <div class="project">
             <img src="projects/projects/project2.jpg">
             <div class="project-content">
                 <h3 data-en="Structural Layout Drafting" data-de="Tragwerksplanung">Structural Layout Drafting</h3>
-                <p data-en="Detailed AutoCAD structural drawing for construction." data-de="Detaillierte AutoCAD-Strukturzeichnung für den Bau.">Detailed AutoCAD structural drawing for construction.</p>
+                <p data-en="Detailed AutoCAD structural drawing prepared for a construction site." data-de="Detaillierte AutoCAD-Strukturzeichnung für eine Baustelle.">Detailed AutoCAD structural drawing prepared for a construction site.</p>
+            </div>
+        </div>
+        <div class="project centered">
+            <img src="projects/projects/project3.jpg">
+            <div class="project-content">
+                <h3 data-en="Engineering Visualization" data-de="Technische Visualisierung">Engineering Visualization</h3>
+                <p data-en="Engineering concept visualization used to present building design layout." data-de="Visualisierung von Ingenieurskonzepten zur Darstellung von Gebäudeentwürfen.">Engineering concept visualization used to present building design layout.</p>
             </div>
         </div>
     </div>
@@ -311,19 +323,27 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
     <div class="reviews-grid">
         <div class="review-card">
             <p style="font-style:italic; margin-bottom:20px;" 
-               data-en="&quot;Brian delivered very accurate AutoCAD drawings for our building project.&quot;" 
-               data-de="&quot;Brian lieferte sehr präzise AutoCAD-Zeichnungen für unser Bauprojekt.&quot;">
-               "Brian delivered very accurate AutoCAD drawings for our building project."
+               data-en="&quot;Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier.&quot;" 
+               data-de="&quot;Brian lieferte sehr präzise AutoCAD-Zeichnungen für unser Bauprojekt. Seine Liebe zum Detail ist erstklassig.&quot;">
+               "Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."
             </p>
-            <strong>- Site Engineer, Nairobi</strong>
+            <strong data-en="- Site Engineer, Nairobi" data-de="- Bauleiter, Nairobi">- Site Engineer, Nairobi</strong>
         </div>
         <div class="review-card">
             <p style="font-style:italic; margin-bottom:20px;" 
-               data-en="&quot;Great German tutor with very clear explanations.&quot;" 
-               data-de="&quot;Toller Deutschlehrer mit sehr klaren Erklärungen.&quot;">
-               "Great German tutor with very clear explanations."
+               data-en="&quot;Excellent graphic design work. He took our rough concept and turned it into a professional brand identity.&quot;" 
+               data-de="&quot;Hervorragende Grafikdesign-Arbeit. Er nahm unser grobes Konzept und machte daraus eine professionelle Markenidentität.&quot;">
+               "Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."
             </p>
-            <strong>- B1 Candidate</strong>
+            <strong data-en="- Marketing Director" data-de="- Marketingleiter">- Marketing Director</strong>
+        </div>
+        <div class="review-card">
+            <p style="font-style:italic; margin-bottom:20px;" 
+               data-en="&quot;Great German tutor with very clear explanations. He made complex grammar feel very simple.&quot;" 
+               data-de="&quot;Toller Deutschlehrer mit sehr klaren Erklärungen. Er hat komplexe Grammatik sehr einfach erscheinen lassen.&quot;">
+               "Great German tutor with very clear explanations. He made complex grammar feel very simple."
+            </p>
+            <strong data-en="- B1 Candidate" data-de="- B1 Kandidat">- B1 Candidate</strong>
         </div>
     </div>
 </section>
@@ -334,8 +354,8 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
     <div style="max-width:600px; margin:auto;">
         <div id="form-status-container">
             <i id="status-icon" class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
-            <h3 id="status-title">Sent!</h3>
-            <p id="status-message" class="status-msg">Thank you.</p>
+            <h3 id="status-title" data-en="Sent!" data-de="Gesendet!">Sent!</h3>
+            <p id="status-message" class="status-msg" data-en="Thank you." data-de="Vielen Dank.">Thank you.</p>
             <button onclick="resetForm()" class="btn btn-primary" data-en="Go Back" data-de="Zurück">Go Back</button>
         </div>
 
@@ -345,9 +365,15 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
                 <a href="tel:+254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fas fa-phone-alt"></i> <span data-en="Call Me" data-de="Anrufen">Call Me</span></a>
             </div>
             <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
-                <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-                <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-                <textarea name="message" placeholder="Message..." rows="5" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
+                <input type="text" name="name" 
+                       data-en-ph="Full Name" data-de-ph="Vollständiger Name" 
+                       placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+                <input type="email" name="email" 
+                       data-en-ph="Email Address" data-de-ph="E-Mail-Adresse" 
+                       placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+                <textarea name="message" 
+                          data-en-ph="Message..." data-de-ph="Nachricht..." 
+                          placeholder="Message..." rows="5" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
                 <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; justify-content:center;">
                     <span id="btn-text" data-en="Send Message" data-de="Nachricht senden">Send Message</span>
                     <div class="loader" id="loader"></div>
@@ -368,7 +394,6 @@ footer{ background: var(--de-black); color:white; text-align:center; padding:60p
 <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-// SCROLL REVEAL
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
@@ -383,12 +408,10 @@ function reveal() {
 }
 window.addEventListener("scroll", reveal);
 
-// MOBILE MENU
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-list');
 menuToggle.onclick = () => { navLinks.classList.toggle('active'); };
 
-// THEME TOGGLE
 const themeBtn = document.getElementById("themeBtn");
 const themeIcon = document.getElementById("themeIcon");
 themeBtn.onclick = () => {
@@ -397,7 +420,6 @@ themeBtn.onclick = () => {
     themeIcon.classList.toggle("fa-sun");
 };
 
-// LANGUAGE TOGGLE
 const langBtn = document.getElementById("langBtn");
 const langLabel = document.getElementById("langLabel");
 let currentLang = 'en';
@@ -406,19 +428,18 @@ langBtn.onclick = () => {
     currentLang = currentLang === 'en' ? 'de' : 'en';
     langLabel.textContent = currentLang === 'en' ? 'DE' : 'EN';
     
+    // Translate standard text
     document.querySelectorAll('[data-en]').forEach(el => {
-        // Handle normal text and placeholders
-        if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-             // Optional: Add placeholder translations here if needed
-        } else {
-             el.textContent = el.getAttribute(`data-${currentLang}`);
-        }
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+    });
+
+    // Translate placeholders
+    document.querySelectorAll('[data-en-ph]').forEach(el => {
+        el.placeholder = el.getAttribute(`data-${currentLang}-ph`);
     });
 };
 
 document.getElementById("year").textContent = new Date().getFullYear();
-
-// SCROLL TOP
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 window.onscroll = () => { 
     scrollTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none"; 
@@ -426,7 +447,6 @@ window.onscroll = () => {
 };
 scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-// AJAX FORM
 const form = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submit-btn');
 const btnText = document.getElementById('btn-text');
@@ -457,7 +477,7 @@ function showStatus(isSuccess) {
     if (isSuccess) {
         statusMsg.textContent = currentLang === 'de' ? "Vielen Dank! Ihre Nachricht wurde empfangen." : "Thank you! Your message has been received.";
     } else {
-        statusMsg.textContent = "Error / Fehler";
+        statusMsg.textContent = currentLang === 'de' ? "Fehler beim Senden." : "Error sending message.";
     }
 }
 
@@ -467,7 +487,6 @@ function resetForm() {
     submitBtn.disabled = false;
     loader.style.display = 'none';
 }
-
 reveal();
 </script>
 </body>
