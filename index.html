@@ -590,7 +590,15 @@ Brian also works in graphic design, creating brand identities and marketing visu
 </footer>
 
 <script>
-
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.project img').forEach(img => {
+  img.onclick = () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  };
+});
+lightbox.onclick = () => lightbox.style.display = 'none';
 const themeIcon=document.getElementById("themeIcon");
 
 themeIcon.onclick=()=>{
