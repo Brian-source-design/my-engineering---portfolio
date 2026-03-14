@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brian Magothe | Civil Engineer</title>
-<link rel="icon" href="favicon-32x32.png">
+<link rel="icon" type="image/png" href="favicon-32x32.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -77,7 +77,7 @@ body.dark-theme .resume-item h4 { color: #60a5fa; }
 
 /* TECHNICAL PROFICIENCY SECTION */
 .skills-container { max-width: 900px; margin: 60px auto 0; padding: 20px; }
-.skill-bar-wrapper { margin-bottom: 45px; } /* Increased spacing for better distribution */
+.skill-bar-wrapper { margin-bottom: 45px; } 
 .skill-info { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600; font-size: 1.1rem; }
 .progress-bg { background: #e2e8f0; height: 10px; border-radius: 20px; overflow: hidden; }
 .progress-fill { background: var(--primary); height: 100%; border-radius: 20px; transition: width 1.5s ease; }
@@ -93,7 +93,7 @@ body.dark-theme .progress-fill { background: #60a5fa; }
 .project-content { padding: 20px; text-align: center; }
 .project.centered { grid-column: span 2; justify-self: center; width: 50%; }
 
-/* CLIENT TESTIMONIALS (MATCHING IMAGE STYLE) */
+/* CLIENT TESTIMONIALS + HOVER EFFECT */
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .review-card { 
     background: #ffffff; 
@@ -104,6 +104,11 @@ body.dark-theme .progress-fill { background: #60a5fa; }
     display: flex; 
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 body.dark-theme .review-card { background: #1e293b; color: #f8fafc; }
 .review-card i.fa-quote-left { color: #0f172a; font-size: 1.2rem; margin-bottom: 15px; }
@@ -112,7 +117,6 @@ body.dark-theme .review-card i.fa-quote-left { color: var(--accent); }
 body.dark-theme .review-card p { color: #cbd5e1; }
 .reviewer-info { display: flex; align-items: center; gap: 12px; font-weight: 700; color: #0f172a; border-top: 1px solid #f1f5f9; padding-top: 15px;}
 body.dark-theme .reviewer-info { color: #f8fafc; border-top: 1px solid #334155; }
-.reviewer-info i { font-size: 1.2rem; }
 
 /* CONTACT ACTIONS */
 .contact-actions { display: flex; gap: 10px; margin-bottom: 30px; justify-content: center; width: 100%; }
@@ -148,6 +152,8 @@ body.dark-theme .reviewer-info { color: #f8fafc; border-top: 1px solid #334155; 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 #success-msg { display: none; background: #10b981; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: 600; text-align: center;}
 footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; margin-top: 50px;}
+.social a{ font-size:1.8rem; margin:0 15px; color:white; transition: 0.3s; text-decoration: none; }
+.social a:hover { color: var(--accent); }
 form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; background: var(--card); color: var(--text); font-family: Inter; }
 </style>
 </head>
@@ -207,7 +213,8 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
             </div>
             <div class="resume-item">
                 <h4>German Language Certification</h4>
-                <span>B2 Level</span> <p>Advanced proficiency in German language, now providing tutoring for academic candidates.</p>
+                <span>B2 Level</span> 
+                <p>Advanced proficiency in German language, now providing tutoring for academic candidates.</p>
             </div>
         </div>
     </div>
@@ -301,7 +308,11 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
 <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
 <footer>
-    <p>© <span id="year"></span> Engineer Brian Magothe</p>
+    <div class="social">
+        <a href="https://www.linkedin.com/in/brian-magothe-3240222b3/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/magothe.ai/"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p style="margin-top:20px;">© <span id="year"></span> Engineer Brian Magothe. All Rights Reserved.</p>
 </footer>
 
 <script>
