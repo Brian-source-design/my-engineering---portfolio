@@ -9,11 +9,9 @@
 
 <title>Brian Magothe | Civil Engineer & AutoCAD Specialist</title>
 
-<meta name="description" content="Portfolio of Brian Magothe, Civil Engineer specializing in AutoCAD drafting, structural detailing, graphic design and German tutoring in Kenya.">
+<meta name="description" content="Portfolio of Brian Magothe. Civil Engineering, AutoCAD drafting, structural detailing, graphic design and German tutoring services in Kenya.">
 
-<meta name="keywords" content="Civil Engineer Kenya, AutoCAD designer Kenya, Structural drafting Kenya, German tutor Kenya, Brian Magothe engineer">
-
-<meta name="author" content="Brian Magothe">
+<meta name="keywords" content="Civil Engineer Kenya, AutoCAD Designer Kenya, Structural Drafting Kenya, German Tutor Kenya, Brian Magothe Engineer">
 
 <link rel="icon" href="favicon-32x32.png">
 
@@ -21,24 +19,36 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
 <style>
 
-/* GLOBAL */
+/* VARIABLES */
 
 :root{
+
 --primary:#1e3a8a;
 --accent:#fbbf24;
---dark:#0f172a;
---light:#f8fafc;
---white:#ffffff;
+
+--bg:#f8fafc;
+--text:#0f172a;
+--card:#ffffff;
+
+--heroText:#ffffff;
+
 }
 
+/* DARK MODE */
+
 body.dark-theme{
---primary:#60a5fa;
---light:#0f172a;
---dark:#f8fafc;
---white:#1e293b;
+
+--bg:#0f172a;
+--text:#f8fafc;
+--card:#1e293b;
+
 }
+
+/* BASE */
 
 *{
 box-sizing:border-box;
@@ -47,94 +57,126 @@ padding:0;
 }
 
 body{
+
 font-family:Inter;
-background:var(--light);
-color:var(--dark);
-scroll-behavior:smooth;
+background:var(--bg);
+color:var(--text);
 transition:0.3s;
+scroll-behavior:smooth;
+
 }
 
 /* NAVBAR */
 
 nav{
+
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 padding:1rem 10%;
-background:white;
+
+background:var(--card);
+
 position:sticky;
 top:0;
 z-index:1000;
+
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
+
 }
 
 .logo{
+
 display:flex;
 align-items:center;
 gap:12px;
+
 font-family:Montserrat;
 font-weight:700;
+
 }
 
 .logo img{
+
 height:40px;
-animation:rotateLogo 10s linear infinite;
+
+animation:spin 12s linear infinite;
+
 }
 
-@keyframes rotateLogo{
-0%{transform:rotateY(0deg);}
-100%{transform:rotateY(360deg);}
+@keyframes spin{
+
+0%{transform:rotateY(0)}
+
+100%{transform:rotateY(360deg)}
+
 }
 
 nav a{
+
 text-decoration:none;
 margin-left:25px;
 font-weight:600;
-color:var(--dark);
+color:var(--text);
+
 }
 
 .theme-toggle{
+
 margin-left:20px;
 cursor:pointer;
+
 }
 
 /* HERO */
 
 .hero{
+
 padding:160px 10% 120px;
 text-align:center;
-color:white;
+color:var(--heroText);
 
 background:
+
 linear-gradient(
 to bottom,
 rgba(0,0,0,0.85),
-rgba(255,0,0,0.3),
-rgba(255,204,0,0.4)
+rgba(255,0,0,0.35),
+rgba(255,204,0,0.45)
 ),
 
-url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070');
+url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070");
 
 background-size:cover;
 background-position:center;
+
 }
 
 .hero h1{
+
 font-size:4rem;
 font-family:Montserrat;
-text-shadow:2px 2px 8px black;
+text-shadow:2px 2px 10px black;
+
 }
 
 .hero p{
-margin:20px auto;
-max-width:700px;
+
+max-width:750px;
+margin:auto;
+margin-top:15px;
+
 font-size:1.2rem;
+text-shadow:1px 1px 6px black;
+
 }
 
 /* BUTTONS */
 
 .btn{
-padding:14px 32px;
+
+padding:14px 30px;
 border-radius:8px;
 font-weight:700;
 text-decoration:none;
@@ -142,150 +184,215 @@ display:inline-flex;
 align-items:center;
 gap:10px;
 margin:10px;
+
 }
 
 .btn-primary{
+
 background:#FFCC00;
 color:black;
+
 }
 
 .btn-light{
+
 background:white;
 color:var(--primary);
+
 }
 
 /* SECTION */
 
 .section{
+
 padding:100px 10%;
+
 }
 
 .section-title{
+
 font-family:Montserrat;
 font-size:2.5rem;
 text-align:center;
-margin-bottom:50px;
+margin-bottom:60px;
+
 }
 
 /* PROFILE */
 
 .profile{
+
 max-width:800px;
 margin:auto;
 text-align:center;
 line-height:1.7;
+
 }
 
-/* GRID */
+/* STATS */
+
+.stats{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+margin-top:50px;
+
+}
+
+.stat{
+
+background:var(--card);
+padding:30px;
+border-radius:12px;
+text-align:center;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.05);
+
+}
+
+.stat h3{
+
+font-size:2rem;
+color:var(--primary);
+
+}
+
+/* EXPERTISE */
 
 .grid{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
-}
 
-/* CARD */
+}
 
 .card{
-background:var(--white);
+
+background:var(--card);
 padding:30px;
 border-radius:15px;
+
 box-shadow:0 10px 25px rgba(0,0,0,0.05);
-transition:0.3s;
-}
 
-.card:hover{
-transform:translateY(-10px);
-}
-
-/* TIMELINE */
-
-.timeline{
-max-width:900px;
-margin:auto;
-}
-
-.timeline-item{
-border-left:3px solid var(--primary);
-padding-left:20px;
-margin-bottom:40px;
 }
 
 /* PORTFOLIO */
 
-.filters{
-text-align:center;
-margin-bottom:40px;
-}
-
-.filters button{
-padding:10px 20px;
-margin:5px;
-border:none;
-background:var(--primary);
-color:white;
-cursor:pointer;
-border-radius:6px;
-}
-
 .portfolio{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:30px;
-}
 
-.project{
-cursor:pointer;
 }
 
 .project img{
+
 width:100%;
 border-radius:10px;
+cursor:pointer;
+
 }
 
 /* LIGHTBOX */
 
 .lightbox{
+
 position:fixed;
 top:0;
 left:0;
+
 width:100%;
 height:100%;
+
 background:rgba(0,0,0,0.9);
+
 display:none;
+
 justify-content:center;
 align-items:center;
+
 z-index:2000;
+
 }
 
 .lightbox img{
+
 max-width:90%;
 max-height:90%;
+
+}
+
+/* 3D MODEL VIEWER */
+
+model-viewer{
+
+width:100%;
+height:500px;
+
+background:var(--card);
+border-radius:15px;
+
+}
+
+/* REVIEWS */
+
+.reviews{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+
+}
+
+.review{
+
+background:var(--card);
+padding:25px;
+
+border-radius:12px;
+
+border-top:4px solid var(--primary);
+
 }
 
 /* CONTACT */
 
-form input, form textarea{
+form input,
+form textarea{
+
 width:100%;
 padding:15px;
 margin-bottom:20px;
+
 border-radius:8px;
+
 border:1px solid #ddd;
+
+background:var(--card);
+color:var(--text);
+
 }
 
 /* FOOTER */
 
 footer{
+
 background:#0f172a;
 color:white;
 text-align:center;
 padding:60px 10%;
+
 }
 
 .social a{
+
 color:white;
 font-size:1.8rem;
 margin:0 15px;
+
 }
 
 @media(max-width:768px){
@@ -306,8 +413,6 @@ flex-wrap:wrap;
 
 <body>
 
-<!-- NAV -->
-
 <nav>
 
 <div class="logo">
@@ -316,36 +421,40 @@ ENG. BRIAN MAGOTHE
 </div>
 
 <div>
+
 <a href="#profile">Profile</a>
 <a href="#expertise">Expertise</a>
-<a href="#timeline">Experience</a>
 <a href="#work">Projects</a>
+<a href="#models">3D Models</a>
+<a href="#reviews">Reviews</a>
 <a href="#contact">Contact</a>
+
 <i class="fas fa-moon theme-toggle" id="themeIcon"></i>
+
 </div>
 
 </nav>
-
-<!-- HERO -->
 
 <header class="hero">
 
 <h1>Brian Magothe</h1>
 
 <p>
+
 Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor
+
 </p>
 
 <a href="#contact" class="btn btn-primary">Connect With Me</a>
 
 <a href="CV_Brian_Magothe.pdf" class="btn btn-light" download>
+
 <i class="fa fa-download"></i>
 Download CV
+
 </a>
 
 </header>
-
-<!-- PROFILE -->
 
 <section class="section" id="profile">
 
@@ -353,13 +462,30 @@ Download CV
 
 <p class="profile">
 
-Brian Magothe is a civil engineering specialist based in Kenya with expertise in AutoCAD drafting, structural detailing, and engineering visualization. He also offers professional graphic design services and German language tutoring for students and professionals preparing for international opportunities.
+Civil engineering specialist with expertise in AutoCAD drafting, structural detailing and engineering visualization.
 
 </p>
 
-</section>
+<div class="stats">
 
-<!-- EXPERTISE -->
+<div class="stat">
+<h3>50+</h3>
+<p>Design Projects</p>
+</div>
+
+<div class="stat">
+<h3>30+</h3>
+<p>Happy Clients</p>
+</div>
+
+<div class="stat">
+<h3>5+</h3>
+<p>Years Experience</p>
+</div>
+
+</div>
+
+</section>
 
 <section class="section" id="expertise">
 
@@ -368,55 +494,23 @@ Brian Magothe is a civil engineering specialist based in Kenya with expertise in
 <div class="grid">
 
 <div class="card">
-<i class="fas fa-drafting-compass"></i>
 <h3>AutoCAD Engineering</h3>
-<p>Precision 2D and 3D technical drafting.</p>
+<p>Precision 2D and 3D drafting.</p>
 </div>
 
 <div class="card">
-<i class="fas fa-bezier-curve"></i>
 <h3>Graphic Design</h3>
-<p>Brand identity, logos and marketing visuals.</p>
+<p>Brand identity and marketing visuals.</p>
 </div>
 
 <div class="card">
-<i class="fas fa-language"></i>
 <h3>German Tutor</h3>
-<p>Professional German tutoring services.</p>
+<p>Professional language instruction.</p>
 </div>
 
 </div>
 
 </section>
-
-<!-- TIMELINE -->
-
-<section class="section" id="timeline">
-
-<h2 class="section-title">Professional Timeline</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<h4>2025 — Civil Engineering Studies</h4>
-<p>Focused on structural design, surveying and AutoCAD drafting.</p>
-</div>
-
-<div class="timeline-item">
-<h4>2024 — AutoCAD Design Work</h4>
-<p>Created multiple residential and structural engineering plans.</p>
-</div>
-
-<div class="timeline-item">
-<h4>2023 — Graphic Design Projects</h4>
-<p>Designed brand identities and marketing graphics.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- PROJECTS -->
 
 <section class="section" id="work">
 
@@ -440,13 +534,54 @@ Brian Magothe is a civil engineering specialist based in Kenya with expertise in
 
 </section>
 
-<!-- LIGHTBOX -->
+<section class="section" id="models">
+
+<h2 class="section-title">3D Engineering Model</h2>
+
+<model-viewer
+
+src="models/engineering-model.glb"
+
+auto-rotate
+
+camera-controls
+
+shadow-intensity="1"
+
+ar
+
+></model-viewer>
+
+</section>
+
+<section class="section" id="reviews">
+
+<h2 class="section-title">Client Reviews</h2>
+
+<div class="reviews">
+
+<div class="review">
+<p>"Brian's AutoCAD designs were extremely precise and professional."</p>
+<strong>John D.</strong>
+</div>
+
+<div class="review">
+<p>"Excellent graphic design work for my brand."</p>
+<strong>Kevin M.</strong>
+</div>
+
+<div class="review">
+<p>"Great German tutor with clear explanations."</p>
+<strong>Elena S.</strong>
+</div>
+
+</div>
+
+</section>
 
 <div class="lightbox" id="lightbox">
 <img id="lightbox-img">
 </div>
-
-<!-- CONTACT -->
 
 <section class="section" id="contact">
 
@@ -470,7 +605,7 @@ Brian Magothe is a civil engineering specialist based in Kenya with expertise in
 
 <i class="fab fa-whatsapp"></i>
 
-WhatsApp
+Contact via WhatsApp
 
 </a>
 
@@ -492,8 +627,6 @@ WhatsApp
 
 <script>
 
-/* DARK MODE */
-
 const themeIcon=document.getElementById("themeIcon");
 
 themeIcon.onclick=()=>{
@@ -508,25 +641,25 @@ themeIcon.classList.replace("fa-sun","fa-moon");
 
 }
 
-/* AUTO YEAR */
-
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* LIGHTBOX */
+/* IMAGE VIEWER */
 
 const lightbox=document.getElementById("lightbox");
 const lightboxImg=document.getElementById("lightbox-img");
 
 document.querySelectorAll(".project img").forEach(img=>{
+
 img.onclick=()=>{
 lightbox.style.display="flex";
 lightboxImg.src=img.src;
-};
+}
+
 });
 
 lightbox.onclick=()=>{
 lightbox.style.display="none";
-};
+}
 
 </script>
 
