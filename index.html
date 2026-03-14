@@ -70,6 +70,18 @@ display:inline-flex; align-items:center; gap:10px; margin:15px 10px;
 body.dark-theme .progress-bg { background: #334155; }
 body.dark-theme .progress-fill { background: var(--accent); }
 
+/* GRID & CARDS */
+.section-title{ text-align:center; font-family:Montserrat; font-size:2.5rem; margin-bottom:60px; }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+.card{ background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
+
+/* PROJECTS */
+.portfolio{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:40px; }
+.project{ background:var(--card); border-radius:12px; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
+.project img{ width:100%; cursor:pointer; transition: 0.3s ease; }
+.project img:hover { opacity: 0.8; }
+.project-content{ padding:20px; }
+
 /* REVIEWS */
 .reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
 .review-card { background:var(--card); padding:30px; border-radius:12px; border-top:4px solid var(--primary); box-shadow:0 10px 20px rgba(0,0,0,0.05); }
@@ -117,7 +129,7 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; }
 
 <section class="section" id="profile">
 <h2 class="section-title">Professional Profile</h2>
-<p class="profile">
+<p style="max-width:800px; margin:auto; text-align:center; line-height:1.8;">
 Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
 </p>
 </section>
@@ -152,8 +164,18 @@ Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting,
 <section class="section" id="projects">
 <h2 class="section-title">Featured Projects</h2>
 <div class="portfolio">
-<div class="project"><img src="projects/projects/project1.jpg" class="gallery-img"><div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design and digital assets.</p></div></div>
-<div class="project"><img src="projects/projects/project2.jpg" class="gallery-img"><div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction site.</p></div></div>
+    <div class="project">
+        <img src="projects/projects/project1.jpg" class="gallery-img">
+        <div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design and digital assets.</p></div>
+    </div>
+    <div class="project">
+        <img src="projects/projects/project2.jpg" class="gallery-img">
+        <div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction site.</p></div>
+    </div>
+    <div class="project">
+        <img src="projects/projects/project3.jpg" class="gallery-img">
+        <div class="project-content"><h3>Engineering Visualization</h3><p>Engineering concept visualization used to present building design layout.</p></div>
+    </div>
 </div>
 </section>
 
