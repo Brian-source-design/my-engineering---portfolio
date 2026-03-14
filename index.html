@@ -136,13 +136,14 @@ body.dark-theme .progress-fill { background: #60a5fa; }
 .project-content { padding: 20px; text-align: center; }
 .project.centered { grid-column: span 2; justify-self: center; width: 50%; }
 
-/* SUCCESS MESSAGE BOX */
-#status-container {
-    display: none; text-align: center; padding: 40px 20px;
-    background: var(--card); border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid #22c55e;
+/* REVIEWS (ORIGINAL CODE RESTORED) */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.review-card { 
+    background: var(--card); padding: 40px 30px; border-radius: 12px; 
+    border-top: 5px solid var(--primary); box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
+    display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;
 }
-.success-icon { font-size: 3rem; color: #22c55e; margin-bottom: 15px; }
+.review-card:hover { transform: translateY(-10px); }
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
@@ -163,6 +164,12 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
 .social a{ font-size:1.8rem; margin:0 15px; color:white; transition: 0.3s; text-decoration: none; }
 .social a:hover { color: var(--accent); }
 #scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; border: none; z-index: 1000; }
+
+/* STATUS STYLES */
+#form-status-container { display: none; text-align: center; padding: 40px 20px; background: var(--card); border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.status-msg { margin-bottom: 20px; font-weight: 600; }
+.status-success { color: #22c55e; }
+.status-error { color: #ef4444; }
 </style>
 </head>
 <body>
@@ -318,25 +325,24 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
     <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Get In Touch</h2>
     <div style="max-width:600px; margin:auto;">
         
-        <div id="status-container">
-            <i class="fas fa-check-circle success-icon"></i>
-            <h3>Message Sent!</h3>
-            <p style="margin: 15px 0 25px;">Vielen Dank! Your message has been received. I will get back to you shortly.</p>
-            <button onclick="resetForm()" class="btn btn-primary">Send Another Message</button>
+        <div id="form-status-container">
+            <i id="status-icon" class="fas fa-check-circle success-icon" style="font-size: 3rem; margin-bottom: 15px;"></i>
+            <h3 id="status-title">Sent!</h3>
+            <p id="status-message" class="status-msg">Thank you. I'll get back to you soon.</p>
+            <button onclick="resetForm()" class="btn btn-primary">Go Back</button>
         </div>
 
-        <div id="form-container">
+        <div id="form-inner-container">
             <div style="display:flex; gap:10px; margin-bottom:30px;">
                 <a href="https://wa.me/254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="tel:+254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fas fa-phone-alt"></i> Call Me</a>
             </div>
-            
             <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
                 <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
                 <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
                 <textarea name="message" placeholder="Tell me about your project..." rows="5" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
                 
-                <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; justify-content:center; gap:15px;">
+                <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; justify-content:center; gap: 15px;">
                     <span id="btn-text">Send Message</span>
                     <div class="loader" id="loader"></div>
                 </button>
@@ -404,13 +410,14 @@ const form = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submit-btn');
 const btnText = document.getElementById('btn-text');
 const loader = document.getElementById('loader');
-const formContainer = document.getElementById('form-container');
-const statusContainer = document.getElementById('status-container');
+const formInner = document.getElementById('form-inner-container');
+const statusBox = document.getElementById('form-status-container');
+const statusIcon = document.getElementById('status-icon');
+const statusTitle = document.getElementById('status-title');
+const statusMsg = document.getElementById('status-message');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Set Loading State
     submitBtn.disabled = true;
     btnText.textContent = 'Sending...';
     loader.style.display = 'block';
@@ -425,29 +432,38 @@ form.addEventListener('submit', async (e) => {
         });
 
         if (response.ok) {
-            formContainer.style.display = 'none';
-            statusContainer.style.display = 'block';
+            showStatus(true);
             form.reset();
         } else {
-            alert("Submission error. Please try again.");
-            resetButton();
+            showStatus(false);
         }
     } catch (error) {
-        alert("Check your connection and try again.");
-        resetButton();
+        showStatus(false);
     }
 });
 
-function resetButton() {
-    submitBtn.disabled = false;
-    btnText.textContent = 'Send Message';
-    loader.style.display = 'none';
+function showStatus(isSuccess) {
+    formInner.style.display = 'none';
+    statusBox.style.display = 'block';
+    if (isSuccess) {
+        statusIcon.className = "fas fa-check-circle";
+        statusIcon.style.color = "#22c55e";
+        statusTitle.textContent = "Sent!";
+        statusMsg.textContent = "Vielen Dank! Your message has been received. I'll get back to you shortly.";
+    } else {
+        statusIcon.className = "fas fa-times-circle";
+        statusIcon.style.color = "#ef4444";
+        statusTitle.textContent = "Error";
+        statusMsg.textContent = "Oops! Something went wrong. Please try again later or contact me via WhatsApp.";
+    }
 }
 
 function resetForm() {
-    statusContainer.style.display = 'none';
-    formContainer.style.display = 'block';
-    resetButton();
+    statusBox.style.display = 'none';
+    formInner.style.display = 'block';
+    submitBtn.disabled = false;
+    btnText.textContent = 'Send Message';
+    loader.style.display = 'none';
 }
 
 reveal();
