@@ -65,6 +65,15 @@ display:inline-flex; align-items:center; gap:10px; transition: 0.3s;
 .btn-light{ background:white; color:#1e3a8a; border:none; }
 .btn-light:hover { background: #f1f5f9; }
 
+/* SKILLS SECTION */
+.skills-container { max-width: 800px; margin: 0 auto; }
+.skill-bar-wrapper { margin-bottom: 25px; }
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
+.progress-bg { background: #e2e8f0; height: 12px; border-radius: 10px; overflow: hidden; }
+.progress-fill { background: var(--primary); height: 100%; border-radius: 10px; transition: width 1.5s ease; }
+body.dark-theme .progress-bg { background: #334155; }
+body.dark-theme .progress-fill { background: var(--accent); }
+
 /* PROJECTS TRIANGLE LAYOUT */
 .portfolio-grid { 
     display: grid; 
@@ -85,11 +94,10 @@ display:inline-flex; align-items:center; gap:10px; transition: 0.3s;
 .project img:hover { transform: scale(1.05); }
 .project-content { padding: 20px; text-align: center; }
 
-/* Centering the 3rd project */
 .project.centered { 
     grid-column: span 2; 
     justify-self: center; 
-    width: 50%; /* Adjusted for a balanced look */
+    width: 50%; 
 }
 
 @media (max-width: 768px) {
@@ -97,9 +105,32 @@ display:inline-flex; align-items:center; gap:10px; transition: 0.3s;
     .project.centered { grid-column: span 1; width: 100%; }
 }
 
-/* CONTACT BUTTONS ROW */
+/* CONTACT */
 .contact-actions { display: flex; gap: 15px; margin-bottom: 30px; }
 .contact-actions .btn { flex: 1; justify-content: center; }
+
+/* SCROLL UP BUTTON */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: 0.3s;
+}
+#scrollTopBtn:hover { background: var(--accent); color: black; transform: scale(1.1); }
+body.dark-theme #scrollTopBtn { background: var(--accent); color: black; }
 
 /* SPINNER & SUCCESS */
 .loader {
@@ -112,16 +143,9 @@ display:inline-flex; align-items:center; gap:10px; transition: 0.3s;
   display: none;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-#success-msg { display: none; background: #10b981; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: 600; }
+#success-msg { display: none; background: #10b981; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: 600; text-align: center;}
 
-/* REST OF STYLES (Expertise, Reviews, etc.) */
-.skills-container { max-width: 800px; margin: 0 auto; }
-.skill-bar-wrapper { margin-bottom: 25px; }
-.skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
-.progress-bg { background: #e2e8f0; height: 12px; border-radius: 10px; overflow: hidden; }
-.progress-fill { background: var(--primary); height: 100%; border-radius: 10px; transition: width 1.5s ease; }
-body.dark-theme .progress-bg { background: #334155; }
-body.dark-theme .progress-fill { background: var(--accent); }
+/* REST OF STYLES */
 .section-title{ text-align:center; font-family:Montserrat; font-size:2.5rem; margin-bottom:60px; }
 .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
 .card{ background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
@@ -265,6 +289,8 @@ Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting,
 </div>
 </section>
 
+<button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
 <footer>
 <div class="social">
 <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
@@ -273,6 +299,7 @@ Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting,
 </footer>
 
 <script>
+// THEME TOGGLE
 const themeIcon=document.getElementById("themeIcon");
 themeIcon.onclick=()=>{
   document.body.classList.toggle("dark-theme");
@@ -280,6 +307,7 @@ themeIcon.onclick=()=>{
 }
 document.getElementById("year").textContent=new Date().getFullYear();
 
+// LIGHTBOX
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 document.querySelectorAll('.gallery-img').forEach(image => {
@@ -290,6 +318,20 @@ document.querySelectorAll('.gallery-img').forEach(image => {
 });
 lightbox.onclick = () => { lightbox.style.display = 'none'; };
 
+// SCROLL TO TOP LOGIC
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+window.onscroll = () => {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollTopBtn.style.display = "flex";
+    } else {
+        scrollTopBtn.style.display = "none";
+    }
+};
+scrollTopBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// CONTACT FORM SUBMISSION
 const contactForm = document.getElementById('contact-form');
 const btnText = document.getElementById('btn-text');
 const btnLoader = document.getElementById('btn-loader');
