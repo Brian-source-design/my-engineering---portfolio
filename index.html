@@ -90,9 +90,31 @@ body.dark-theme .progress-fill { background: var(--accent); }
 .reviewer-info i { color: var(--primary); font-size: 1.2rem; }
 body.dark-theme .reviewer-info i { color: var(--accent); }
 
-/* CONTACT */
+/* CONTACT & SPINNER */
 .contact-container { max-width: 600px; margin: 0 auto; text-align: center; }
 form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; background: var(--card); color: var(--text); font-family: Inter; }
+
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  display: none; /* Hidden by default */
+  margin: 0 auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+#success-msg {
+    display: none;
+    background: #10b981;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-weight: 600;
+}
 
 /* FOOTER */
 footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; }
@@ -208,17 +230,20 @@ Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting,
     <a href="https://wa.me/254742409512" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:30px;">
     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
     </a>
-    <form>
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <textarea rows="5" placeholder="Tell me about your project..." required></textarea>
     
-    <div style="display: flex; justify-content: center; width: 100%;">
-        <button type="submit" class="btn btn-primary" style="width:100%; font-weight:900; text-transform:uppercase; letter-spacing:1px; padding: 18px;">
-            Send Message
-        </button>
-    </div>
+    <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+        
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; font-weight:900; text-transform:uppercase; letter-spacing:1px; padding: 18px; display: flex; justify-content: center; align-items: center;">
+                <span id="btn-text">Send Message</span>
+                <div class="loader" id="btn-loader"></div>
+            </button>
+        </div>
     </form>
+    <div id="success-msg">✅ Message Sent Successfully! I'll get back to you soon.</div>
 </div>
 </section>
 
@@ -230,13 +255,15 @@ Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting,
 </footer>
 
 <script>
+// THEME TOGGLE
 const themeIcon=document.getElementById("themeIcon");
 themeIcon.onclick=()=>{
-document.body.classList.toggle("dark-theme");
-if(document.body.classList.contains("dark-theme")){themeIcon.classList.replace("fa-moon","fa-sun");}else{themeIcon.classList.replace("fa-sun","fa-moon");}
+  document.body.classList.toggle("dark-theme");
+  if(document.body.classList.contains("dark-theme")){themeIcon.classList.replace("fa-moon","fa-sun");}else{themeIcon.classList.replace("fa-sun","fa-moon");}
 }
 document.getElementById("year").textContent=new Date().getFullYear();
 
+// LIGHTBOX
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 document.querySelectorAll('.gallery-img').forEach(image => {
@@ -246,5 +273,43 @@ document.querySelectorAll('.gallery-img').forEach(image => {
   };
 });
 lightbox.onclick = () => { lightbox.style.display = 'none'; };
+
+// CONTACT FORM SUBMISSION
+const contactForm = document.getElementById('contact-form');
+const btnText = document.getElementById('btn-text');
+const btnLoader = document.getElementById('btn-loader');
+const successMsg = document.getElementById('success-msg');
+
+contactForm.onsubmit = async (e) => {
+    e.preventDefault();
+    
+    // Show Loader
+    btnText.style.display = 'none';
+    btnLoader.style.display = 'block';
+    
+    const formData = new FormData(contactForm);
+    
+    try {
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+            successMsg.style.display = 'block';
+            contactForm.reset();
+            setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+        } else {
+            alert("Oops! There was a problem submitting your form.");
+        }
+    } catch (error) {
+        alert("Oops! Connection error. Please try again.");
+    } finally {
+        // Reset Button
+        btnText.style.display = 'block';
+        btnLoader.style.display = 'none';
+    }
+};
 </script>
 </body></html>
