@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brian Magothe | Civil Engineer</title>
 <link rel="icon" type="image/png" href="favicon-32x32.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -18,7 +19,7 @@ body.dark-theme{
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-font-family:Inter;background:var(--bg);color:var(--text);scroll-behavior:smooth;transition:0.3s;
+font-family:Inter, sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth;transition:0.3s;
 overflow-x: hidden;
 }
 
@@ -35,7 +36,7 @@ overflow-x: hidden;
 
 .section { scroll-margin-top: 70px; padding: 100px 10%; }
 
-/* NAVBAR & UI CONTROLS */
+/* NAVBAR */
 nav{
 display:flex;justify-content:space-between;align-items:center;
 padding:1rem 5%; background:var(--card);
@@ -44,7 +45,7 @@ box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 .logo{
 display:flex;align-items:center;gap:12px;
-font-family:Montserrat;font-weight:700;font-size:20px;
+font-family:Montserrat, sans-serif;font-weight:700;font-size:20px;
 }
 .logo img{ 
     height:40px; width:40px; border-radius: 50%; 
@@ -78,7 +79,7 @@ display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem;
 }
 .nav-links a i { color: var(--accent); }
 
-/* HERO SECTION */
+/* HERO */
 .hero{
 min-height:100vh; display:flex;flex-direction:column;justify-content:center;align-items:center;
 text-align:center; color:white; padding:0 10%; position:relative;
@@ -86,7 +87,7 @@ background: linear-gradient(to bottom,rgba(0,0,0,0.85),rgba(255,0,0,0.35),rgba(2
 url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070");
 background-size:cover;background-position:center;
 }
-.hero h1{ font-size:4rem; font-family:Montserrat; text-shadow:2px 2px 10px black; }
+.hero h1{ font-size:4rem; font-family:Montserrat, sans-serif; text-shadow:2px 2px 10px black; }
 .hero p{ margin-top:15px; max-width:750px; font-size:1.2rem; text-shadow:1px 1px 6px black; margin-bottom: 30px;}
 
 .btn{
@@ -96,24 +97,40 @@ display:inline-flex; align-items:center; gap:10px; transition: 0.3s;
 .btn-primary{ background:#FFCC00; color:black; border:none; cursor:pointer; }
 .btn-light{ background:white; color:#1e3a8a; border:none; }
 
-/* RESUME/SKILLS */
+/* EXPERIENCE / EDUCATION */
 .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.resume-column h3 { margin-bottom: 25px; font-family: Montserrat, sans-serif; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
 .resume-item { margin-bottom: 30px; padding-left: 20px; border-left: 3px solid var(--primary); }
-.resume-item h4 { font-size: 1.2rem; color: var(--primary); font-weight: 700; }
+.resume-item h4 { font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 5px; }
 body.dark-theme .resume-item h4 { color: #60a5fa; }
+.resume-item span { font-size: 0.9rem; font-weight: 600; color: #64748b; }
+.resume-item p { margin-top: 10px; font-size: 1rem; color: var(--text); opacity: 0.9; }
 
-.skills-container { max-width: 900px; margin: 60px auto 0; }
-.progress-bg { background: #e2e8f0; height: 10px; border-radius: 20px; overflow: hidden; margin-top: 10px;}
-.progress-fill { background: var(--primary); height: 100%; width: 0; transition: width 2s ease-in-out; }
+/* SKILLS */
+.skills-container { max-width: 900px; margin: 60px auto 0; padding: 20px; }
+.skill-bar-wrapper { margin-bottom: 45px; } 
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600; font-size: 1.1rem; }
+.progress-bg { background: #e2e8f0; height: 10px; border-radius: 20px; overflow: hidden; }
+.progress-fill { background: var(--primary); height: 100%; width: 0; border-radius: 20px; transition: width 2s ease-in-out; }
 body.dark-theme .progress-bg { background: #334155; }
+body.dark-theme .progress-fill { background: #60a5fa; }
 
-/* PORTFOLIO & REVIEWS */
-.portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-.project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+/* PROJECTS */
+.portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
+.project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+.project:hover { transform: translateY(-5px); }
 .project img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; cursor: pointer; }
 .project img:hover { transform: scale(1.05); }
+.project-content { padding: 20px; text-align: center; }
+.project.centered { grid-column: span 2; justify-self: center; width: 50%; }
+
+/* REVIEWS */
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.review-card { background: var(--card); padding: 30px; border-radius: 12px; border-top: 5px solid var(--primary); transition: 0.3s; }
+.review-card { 
+    background: var(--card); padding: 40px 30px; border-radius: 12px; 
+    border-top: 5px solid var(--primary); box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
+    display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;
+}
 .review-card:hover { transform: translateY(-10px); }
 
 /* MOBILE RESPONSIVE */
@@ -127,11 +144,12 @@ body.dark-theme .progress-bg { background: #334155; }
     .nav-links.active { display: flex; }
     .nav-links a { margin: 15px 0; width: 100%; justify-content: center; margin-left: 0; }
     .resume-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .project.centered { grid-column: span 1; width: 100%; }
     .hero h1 { font-size: 2.5rem; }
 }
 
 footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; margin-top: 50px;}
-.social a{ font-size:1.8rem; margin:0 15px; color:white; text-decoration: none; transition: 0.3s; }
+.social a{ font-size:1.8rem; margin:0 15px; color:white; transition: 0.3s; text-decoration: none; }
 .social a:hover { color: var(--accent); }
 #scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; border: none; z-index: 1000; }
 </style>
@@ -158,7 +176,7 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
 <header class="hero">
     <h1>Brian Magothe</h1>
     <p>Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor</p>
-    <div class="hero-btns" style="display:flex; flex-direction:column; gap:15px; align-items:center;">
+    <div style="display:flex; flex-direction:column; gap:15px; align-items:center; margin-top:30px;">
         <div style="display:flex; gap:15px;">
             <a href="#contact" class="btn btn-primary">Connect With Me</a>
             <a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-primary">Preview CV</a>
@@ -168,10 +186,14 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
 </header>
 
 <section class="section reveal" id="profile">
-    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Professional Profile</h2>
+    <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Professional Profile</h2>
+    <p style="max-width:800px; margin:0 auto 60px; text-align:center; line-height:1.8;">
+        Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
+    </p>
+
     <div class="resume-grid">
         <div class="resume-column">
-            <h3 style="margin-bottom:20px;">Experience</h3>
+            <h3>Experience</h3>
             <div class="resume-item">
                 <h4>Civil Engineering Specialist</h4>
                 <span>2022 - Present</span>
@@ -180,11 +202,11 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
             <div class="resume-item">
                 <h4>Lead Graphic Designer</h4>
                 <span>2021 - Present</span>
-                <p>Developing professional brand identities and digital layouts.</p>
+                <p>Developing professional brand identities, marketing assets, and modern digital layouts.</p>
             </div>
         </div>
         <div class="resume-column">
-            <h3 style="margin-bottom:20px;">Education</h3>
+            <h3>Education</h3>
             <div class="resume-item">
                 <h4>BSc. Civil Engineering</h4>
                 <span>In Progress</span>
@@ -199,36 +221,36 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
     </div>
 
     <div class="skills-container">
-        <h2 style="text-align:center; margin-top:60px; margin-bottom:30px;">Technical Proficiency</h2>
-        <div style="margin-bottom:25px;">
-            <div style="display:flex; justify-content:space-between; font-weight:600;"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
+        <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Technical Proficiency</h2>
+        <div class="skill-bar-wrapper">
+            <div class="skill-info"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
             <div class="progress-bg"><div class="progress-fill" data-percent="95%"></div></div>
         </div>
-        <div style="margin-bottom:25px;">
-            <div style="display:flex; justify-content:space-between; font-weight:600;"><span>Graphic Design (Branding)</span><span>88%</span></div>
+        <div class="skill-bar-wrapper">
+            <div class="skill-info"><span>Graphic Design (Branding)</span><span>88%</span></div>
             <div class="progress-bg"><div class="progress-fill" data-percent="88%"></div></div>
         </div>
-        <div style="margin-bottom:25px;">
-            <div style="display:flex; justify-content:space-between; font-weight:600;"><span>German Language Instruction</span><span>90%</span></div>
+        <div class="skill-bar-wrapper">
+            <div class="skill-info"><span>German Language Instruction</span><span>90%</span></div>
             <div class="progress-bg"><div class="progress-fill" data-percent="90%"></div></div>
         </div>
     </div>
 </section>
 
 <section class="section reveal" id="expertise">
-    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Expertise</h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
-        <div style="background:var(--card); padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
+    <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Expertise</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;">
+        <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
             <i class="fas fa-drafting-compass" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
             <h3>AutoCAD Engineering</h3>
             <p>Precision engineering drafting for structural and construction designs.</p>
         </div>
-        <div style="background:var(--card); padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
+        <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
             <i class="fas fa-palette" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
             <h3>Graphic Design</h3>
             <p>Modern branding, logo creation and visual communication design.</p>
         </div>
-        <div style="background:var(--card); padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
+        <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
             <i class="fas fa-language" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
             <h3>German Tutor</h3>
             <p>Professional German language lessons for academic and career preparation.</p>
@@ -237,43 +259,61 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
 </section>
 
 <section class="section reveal" id="projects">
-    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Featured Projects</h2>
+    <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Featured Projects</h2>
     <div class="portfolio-grid">
-        <div class="project"><img src="projects/projects/project1.jpg"></div>
-        <div class="project"><img src="projects/projects/project2.jpg"></div>
-        <div class="project" style="grid-column: span 2; justify-self: center; width: 50%;"><img src="projects/projects/project3.jpg"></div>
+        <div class="project">
+            <img src="projects/projects/project1.jpg">
+            <div class="project-content">
+                <h3>Brand Identity Design</h3>
+                <p>Complete branding project including logo design and digital assets.</p>
+            </div>
+        </div>
+        <div class="project">
+            <img src="projects/projects/project2.jpg">
+            <div class="project-content">
+                <h3>Structural Layout Drafting</h3>
+                <p>Detailed AutoCAD structural drawing prepared for a construction site.</p>
+            </div>
+        </div>
+        <div class="project centered">
+            <img src="projects/projects/project3.jpg">
+            <div class="project-content">
+                <h3>Engineering Visualization</h3>
+                <p>Engineering concept visualization used to present building design layout.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="section reveal" id="reviews">
-    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Client Testimonials</h2>
+    <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Client Testimonials</h2>
     <div class="reviews-grid">
         <div class="review-card">
-            <p style="font-style:italic; margin-bottom:15px;">"Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."</p>
+            <p style="font-style:italic; margin-bottom:20px;">"Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."</p>
             <strong>- Site Engineer, Nairobi</strong>
         </div>
         <div class="review-card">
-            <p style="font-style:italic; margin-bottom:15px;">"Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."</p>
+            <p style="font-style:italic; margin-bottom:20px;">"Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."</p>
             <strong>- Marketing Director</strong>
         </div>
         <div class="review-card">
-            <p style="font-style:italic; margin-bottom:15px;">"Great German tutor with very clear explanations. He made complex grammar feel very simple."</p>
+            <p style="font-style:italic; margin-bottom:20px;">"Great German tutor with very clear explanations. He made complex grammar feel very simple."</p>
             <strong>- B1 Candidate</strong>
         </div>
     </div>
 </section>
 
 <section class="section reveal" id="contact">
-    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Get In Touch</h2>
-    <div style="max-width:600px; margin:auto; text-align:center;">
-        <div style="display:flex; gap:10px; margin-bottom:25px;">
+    <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Get In Touch</h2>
+    <div style="max-width:600px; margin:auto;">
+        <div style="display:flex; gap:10px; margin-bottom:30px;">
             <a href="https://wa.me/254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             <a href="tel:+254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fas fa-phone-alt"></i> Call Me</a>
         </div>
-        <form action="https://formspree.io/f/mdawzobw" method="POST" id="contact-form">
-            <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-            <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-            <textarea name="message" placeholder="Tell me about your project..." rows="5" required style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
+        <form action="https://formspree.io/f/mdawzobw" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+            <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+            <textarea name="message" placeholder="Tell me about your project..." rows="5" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
             <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message</button>
         </form>
     </div>
@@ -290,7 +330,7 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; ma
 <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-// SCROLL REVEAL TRIGGER
+// SCROLL REVEAL ANIMATION
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
@@ -299,7 +339,7 @@ function reveal() {
         var elementVisible = 100;
         if (elementTop < windowHeight - elementVisible) {
             reveals[i].classList.add("active");
-            // Fill skill bars
+            // Trigger skill bar animation
             const bars = reveals[i].querySelectorAll('.progress-fill');
             bars.forEach(bar => bar.style.width = bar.getAttribute('data-percent'));
         }
@@ -307,11 +347,13 @@ function reveal() {
 }
 window.addEventListener("scroll", reveal);
 
-// MOBILE MENU LOGIC
+// MOBILE MENU
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-list');
 menuToggle.onclick = () => { navLinks.classList.toggle('active'); };
-document.querySelectorAll('.nav-links a').forEach(l => l.onclick = () => navLinks.classList.remove('active'));
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.onclick = () => { navLinks.classList.remove('active'); };
+});
 
 // THEME TOGGLE
 const themeBtn = document.getElementById("themeBtn");
@@ -324,12 +366,16 @@ themeBtn.onclick = () => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// SCROLL TO TOP
+// SCROLL TOP
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 window.onscroll = () => { 
     scrollTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none"; 
-    reveal(); 
+    reveal();
 };
 scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+// INITIAL CHECK
+reveal();
 </script>
-</body></html>
+</body>
+</html>
