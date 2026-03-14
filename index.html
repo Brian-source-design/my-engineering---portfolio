@@ -10,13 +10,27 @@
 :root{
 --primary:#1e3a8a;--accent:#fbbf24;
 --bg:#f8fafc;--text:#0f172a;--card:#ffffff;
+--toggle-bg: rgba(0,0,0,0.05);
 }
 body.dark-theme{
 --bg:#0f172a;--text:#f8fafc;--card:#1e293b;
+--toggle-bg: rgba(255,255,255,0.1);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:Inter;background:var(--bg);color:var(--text);scroll-behavior:smooth;transition:0.3s;
+overflow-x: hidden;
+}
+
+/* SCROLL REVEAL ANIMATION */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section { scroll-margin-top: 70px; padding: 100px 10%; }
@@ -32,28 +46,28 @@ box-shadow:0 2px 10px rgba(0,0,0,0.05);
 display:flex;align-items:center;gap:12px;
 font-family:Montserrat;font-weight:700;font-size:20px;
 }
-/* CIRCULAR LOGO STYLE */
 .logo img{ 
-    height:40px; 
-    width:40px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    border: 2px solid var(--accent);
+    height:40px; width:40px; border-radius: 50%; 
+    object-fit: cover; border: 2px solid var(--accent);
     animation:spinLogo 10s linear infinite; 
 }
 @keyframes spinLogo{ 0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)} }
 
-.nav-right-controls { display: flex; align-items: center; gap: 20px; }
+.nav-right-controls { display: flex; align-items: center; gap: 15px; }
 
-.theme-toggle { 
-    font-size: 1.4rem; 
-    cursor: pointer; 
-    color: var(--text); 
-    transition: 0.3s ease;
-    padding: 5px;
+/* THEME TOGGLE CIRCULAR BUTTON */
+.theme-toggle-container {
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    background: var(--toggle-bg);
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; transition: 0.3s;
+    border: 1px solid rgba(0,0,0,0.05);
 }
-body.dark-theme .theme-toggle { color: var(--accent); text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
-.theme-toggle:hover { transform: scale(1.2) rotate(15deg); }
+body.dark-theme .theme-toggle-container { border-color: rgba(255,255,255,0.1); }
+.theme-toggle-container:hover { transform: scale(1.1); background: var(--accent); }
+.theme-toggle-container:hover .theme-toggle { color: #000; }
+.theme-toggle { font-size: 1.2rem; color: var(--text); }
 
 .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
 
@@ -64,7 +78,7 @@ display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem;
 }
 .nav-links a i { color: var(--accent); }
 
-/* HERO */
+/* HERO SECTION */
 .hero{
 min-height:100vh; display:flex;flex-direction:column;justify-content:center;align-items:center;
 text-align:center; color:white; padding:0 10%; position:relative;
@@ -75,113 +89,57 @@ background-size:cover;background-position:center;
 .hero h1{ font-size:4rem; font-family:Montserrat; text-shadow:2px 2px 10px black; }
 .hero p{ margin-top:15px; max-width:750px; font-size:1.2rem; text-shadow:1px 1px 6px black; margin-bottom: 30px;}
 
-.hero-btns { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-.hero-row { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-
 .btn{
 padding:14px 30px; border-radius:8px; text-decoration:none; font-weight:700;
 display:inline-flex; align-items:center; gap:10px; transition: 0.3s;
-white-space: nowrap;
 }
 .btn-primary{ background:#FFCC00; color:black; border:none; cursor:pointer; }
 .btn-light{ background:white; color:#1e3a8a; border:none; }
 
-/* RESUME / TIMELINE */
+/* RESUME/SKILLS */
 .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.resume-column h3 { margin-bottom: 25px; font-family: Montserrat; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
 .resume-item { margin-bottom: 30px; padding-left: 20px; border-left: 3px solid var(--primary); }
-.resume-item h4 { font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 5px; }
+.resume-item h4 { font-size: 1.2rem; color: var(--primary); font-weight: 700; }
 body.dark-theme .resume-item h4 { color: #60a5fa; }
-.resume-item span { font-size: 0.9rem; font-weight: 600; color: #64748b; }
-.resume-item p { margin-top: 10px; font-size: 1rem; color: var(--text); opacity: 0.9; }
 
-/* TECHNICAL PROFICIENCY */
-.skills-container { max-width: 900px; margin: 60px auto 0; padding: 20px; }
-.skill-bar-wrapper { margin-bottom: 45px; } 
-.skill-info { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600; font-size: 1.1rem; }
-.progress-bg { background: #e2e8f0; height: 10px; border-radius: 20px; overflow: hidden; }
-.progress-fill { background: var(--primary); height: 100%; border-radius: 20px; transition: width 1.5s ease; }
+.skills-container { max-width: 900px; margin: 60px auto 0; }
+.progress-bg { background: #e2e8f0; height: 10px; border-radius: 20px; overflow: hidden; margin-top: 10px;}
+.progress-fill { background: var(--primary); height: 100%; width: 0; transition: width 2s ease-in-out; }
 body.dark-theme .progress-bg { background: #334155; }
-body.dark-theme .progress-fill { background: #60a5fa; }
 
-/* PROJECTS */
-.portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
-.project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
-.project:hover { transform: translateY(-5px); }
-.project img { width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: 0.5s; }
+/* PORTFOLIO & REVIEWS */
+.portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.project img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; cursor: pointer; }
 .project img:hover { transform: scale(1.05); }
-.project-content { padding: 20px; text-align: center; }
-.project.centered { grid-column: span 2; justify-self: center; width: 50%; }
-
-/* CLIENT TESTIMONIALS + HOVER EFFECT */
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.review-card { 
-    background: #ffffff; 
-    padding: 40px 30px; 
-    border-radius: 12px; 
-    border-top: 5px solid #1e3a8a; 
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.review-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
-body.dark-theme .review-card { background: #1e293b; color: #f8fafc; }
-.review-card i.fa-quote-left { color: #0f172a; font-size: 1.2rem; margin-bottom: 15px; }
-body.dark-theme .review-card i.fa-quote-left { color: var(--accent); }
-.review-card p { font-style: normal; line-height: 1.6; font-size: 1.05rem; color: #334155; margin-bottom: 25px;}
-body.dark-theme .review-card p { color: #cbd5e1; }
-.reviewer-info { display: flex; align-items: center; gap: 12px; font-weight: 700; color: #0f172a; border-top: 1px solid #f1f5f9; padding-top: 15px;}
-body.dark-theme .reviewer-info { color: #f8fafc; border-top: 1px solid #334155; }
+.review-card { background: var(--card); padding: 30px; border-radius: 12px; border-top: 5px solid var(--primary); transition: 0.3s; }
+.review-card:hover { transform: translateY(-10px); }
 
-/* CONTACT ACTIONS */
-.contact-actions { display: flex; gap: 10px; margin-bottom: 30px; justify-content: center; width: 100%; }
-.contact-actions .btn { flex: 1; justify-content: center; font-size: 0.95rem; }
-
-/* MOBILE RESPONSIVE FIXES */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    .menu-toggle { display: block; }
+    .menu-toggle { display: block; order: 3; }
+    .theme-toggle-container { order: 2; margin-left: auto; margin-right: 15px; }
     .nav-links {
         display: none; flex-direction: column; width: 100%; background: var(--card);
         position: absolute; top: 100%; left: 0; padding: 20px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
     .nav-links.active { display: flex; }
-    .nav-links a { margin: 15px 0; font-size: 1.1rem; width: 100%; justify-content: center; margin-left: 0; }
-    
+    .nav-links a { margin: 15px 0; width: 100%; justify-content: center; margin-left: 0; }
+    .resume-grid, .portfolio-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.5rem; }
-    .resume-grid { grid-template-columns: 1fr; }
-    .portfolio-grid { grid-template-columns: 1fr; }
-    .project.centered { grid-column: span 1; width: 100%; }
-    
-    .contact-actions { flex-direction: row !important; } 
-    .contact-actions .btn { padding: 12px 5px; font-size: 0.85rem; }
 }
 
-/* MISC STYLES */
-.section-title{ text-align:center; font-family:Montserrat; font-size:2.5rem; margin-bottom:60px; }
-.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
-.card{ background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
-.lightbox{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; }
-.lightbox img{ max-width:90%; max-height:90%; border: 2px solid white; }
-#scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
-.loader { border: 3px solid rgba(0,0,0,0.1); border-top: 3px solid #000; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: none; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-#success-msg { display: none; background: #10b981; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: 600; text-align: center;}
 footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; margin-top: 50px;}
-.social a{ font-size:1.8rem; margin:0 15px; color:white; transition: 0.3s; text-decoration: none; }
+.social a{ font-size:1.8rem; margin:0 15px; color:white; text-decoration: none; transition: 0.3s; }
 .social a:hover { color: var(--accent); }
-form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; background: var(--card); color: var(--text); font-family: Inter; }
+#scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; border: none; z-index: 1000; }
 </style>
 </head>
 <body>
 
 <nav>
     <div class="logo"><img src="logo.png">ENG. BRIAN MAGOTHE</div>
-    
     <div class="nav-right-controls">
         <div class="nav-links" id="nav-list">
             <a href="#profile"><i class="fas fa-user-tie"></i> Profile</a>
@@ -190,7 +148,9 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
             <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
             <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
         </div>
-        <i class="fas fa-moon theme-toggle" id="themeIcon"></i>
+        <div class="theme-toggle-container" id="themeBtn">
+            <i class="fas fa-moon theme-toggle" id="themeIcon"></i>
+        </div>
         <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
     </div>
 </nav>
@@ -198,24 +158,20 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
 <header class="hero">
     <h1>Brian Magothe</h1>
     <p>Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor</p>
-    <div class="hero-btns">
-        <div class="hero-row">
+    <div class="hero-btns" style="display:flex; flex-direction:column; gap:15px; align-items:center;">
+        <div style="display:flex; gap:15px;">
             <a href="#contact" class="btn btn-primary">Connect With Me</a>
-            <a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-primary"><i class="fa fa-eye"></i> Preview CV</a>
+            <a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-primary">Preview CV</a>
         </div>
         <a href="CV_Brian_Magothe.pdf" download class="btn btn-light"><i class="fa fa-download"></i> Download CV</a>
     </div>
 </header>
 
-<section class="section" id="profile">
-    <h2 class="section-title">Professional Profile</h2>
-    <p style="max-width:800px; margin:auto; text-align:center; line-height:1.8; margin-bottom: 60px;">
-        Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
-    </p>
-
+<section class="section reveal" id="profile">
+    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Professional Profile</h2>
     <div class="resume-grid">
         <div class="resume-column">
-            <h3>Experience</h3>
+            <h3 style="margin-bottom:20px;">Experience</h3>
             <div class="resume-item">
                 <h4>Civil Engineering Specialist</h4>
                 <span>2022 - Present</span>
@@ -224,11 +180,11 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
             <div class="resume-item">
                 <h4>Lead Graphic Designer</h4>
                 <span>2021 - Present</span>
-                <p>Developing professional brand identities, marketing assets, and modern digital layouts.</p>
+                <p>Developing professional brand identities and digital layouts.</p>
             </div>
         </div>
         <div class="resume-column">
-            <h3>Education</h3>
+            <h3 style="margin-bottom:20px;">Education</h3>
             <div class="resume-item">
                 <h4>BSc. Civil Engineering</h4>
                 <span>In Progress</span>
@@ -243,92 +199,85 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
     </div>
 
     <div class="skills-container">
-        <h2 class="section-title" style="margin-bottom: 40px;">Technical Proficiency</h2>
-        <div class="skill-bar-wrapper">
-            <div class="skill-info"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
-            <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
+        <h2 style="text-align:center; margin-top:60px; margin-bottom:30px;">Technical Proficiency</h2>
+        <div style="margin-bottom:25px;">
+            <div style="display:flex; justify-content:space-between; font-weight:600;"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
+            <div class="progress-bg"><div class="progress-fill" data-percent="95%"></div></div>
         </div>
-        <div class="skill-bar-wrapper">
-            <div class="skill-info"><span>Graphic Design (Branding)</span><span>88%</span></div>
-            <div class="progress-bg"><div class="progress-fill" style="width: 88%;"></div></div>
+        <div style="margin-bottom:25px;">
+            <div style="display:flex; justify-content:space-between; font-weight:600;"><span>Graphic Design (Branding)</span><span>88%</span></div>
+            <div class="progress-bg"><div class="progress-fill" data-percent="88%"></div></div>
         </div>
-        <div class="skill-bar-wrapper">
-            <div class="skill-info"><span>German Language Instruction</span><span>90%</span></div>
-            <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
+        <div style="margin-bottom:25px;">
+            <div style="display:flex; justify-content:space-between; font-weight:600;"><span>German Language Instruction</span><span>90%</span></div>
+            <div class="progress-bg"><div class="progress-fill" data-percent="90%"></div></div>
         </div>
     </div>
 </section>
 
-<section class="section" id="expertise">
-    <h2 class="section-title">Expertise</h2>
-    <div class="grid">
-        <div class="card"><h3>AutoCAD Engineering</h3><p>Precision engineering drafting for structural and construction designs.</p></div>
-        <div class="card"><h3>Graphic Design</h3><p>Modern branding, logo creation and visual communication design.</p></div>
-        <div class="card"><h3>German Tutor</h3><p>Professional German language lessons for academic and career preparation.</p></div>
+<section class="section reveal" id="expertise">
+    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Expertise</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
+        <div style="background:var(--card); padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
+            <i class="fas fa-drafting-compass" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
+            <h3>AutoCAD Engineering</h3>
+            <p>Precision engineering drafting for structural and construction designs.</p>
+        </div>
+        <div style="background:var(--card); padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
+            <i class="fas fa-palette" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
+            <h3>Graphic Design</h3>
+            <p>Modern branding, logo creation and visual communication design.</p>
+        </div>
+        <div style="background:var(--card); padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
+            <i class="fas fa-language" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
+            <h3>German Tutor</h3>
+            <p>Professional German language lessons for academic and career preparation.</p>
+        </div>
     </div>
 </section>
 
-<section class="section" id="projects">
-    <h2 class="section-title">Featured Projects</h2>
+<section class="section reveal" id="projects">
+    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Featured Projects</h2>
     <div class="portfolio-grid">
-        <div class="project">
-            <img src="projects/projects/project1.jpg" class="gallery-img">
-            <div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design and digital assets.</p></div>
-        </div>
-        <div class="project">
-            <img src="projects/projects/project2.jpg" class="gallery-img">
-            <div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction site.</p></div>
-        </div>
-        <div class="project centered">
-            <img src="projects/projects/project3.jpg" class="gallery-img">
-            <div class="project-content"><h3>Engineering Visualization</h3><p>Engineering concept visualization used to present building design layout.</p></div>
-        </div>
+        <div class="project"><img src="projects/projects/project1.jpg"></div>
+        <div class="project"><img src="projects/projects/project2.jpg"></div>
+        <div class="project" style="grid-column: span 2; justify-self: center; width: 50%;"><img src="projects/projects/project3.jpg"></div>
     </div>
 </section>
 
-<section class="section" id="reviews">
-    <h2 class="section-title">Client Testimonials</h2>
+<section class="section reveal" id="reviews">
+    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Client Testimonials</h2>
     <div class="reviews-grid">
         <div class="review-card">
-            <i class="fas fa-quote-left"></i>
-            <p>"Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."</p>
-            <div class="reviewer-info"><i class="fas fa-user-circle"></i> Site Engineer, Nairobi</div>
+            <p style="font-style:italic; margin-bottom:15px;">"Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."</p>
+            <strong>- Site Engineer, Nairobi</strong>
         </div>
         <div class="review-card">
-            <i class="fas fa-quote-left"></i>
-            <p>"Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."</p>
-            <div class="reviewer-info"><i class="fas fa-user-circle"></i> Marketing Director</div>
+            <p style="font-style:italic; margin-bottom:15px;">"Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."</p>
+            <strong>- Marketing Director</strong>
         </div>
         <div class="review-card">
-            <i class="fas fa-quote-left"></i>
-            <p>"Great German tutor with very clear explanations. He made complex grammar feel very simple."</p>
-            <div class="reviewer-info"><i class="fas fa-user-circle"></i> B1 Candidate</div>
+            <p style="font-style:italic; margin-bottom:15px;">"Great German tutor with very clear explanations. He made complex grammar feel very simple."</p>
+            <strong>- B1 Candidate</strong>
         </div>
     </div>
 </section>
 
-<section class="section" id="contact">
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-container" style="max-width: 600px; margin: auto;">
-        <div class="contact-actions">
-            <a href="https://wa.me/254742409512" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="tel:+254742409512" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call Me</a>
+<section class="section reveal" id="contact">
+    <h2 style="text-align:center; margin-bottom:40px; font-family: Montserrat;">Get In Touch</h2>
+    <div style="max-width:600px; margin:auto; text-align:center;">
+        <div style="display:flex; gap:10px; margin-bottom:25px;">
+            <a href="https://wa.me/254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fas fa-phone-alt"></i> Call Me</a>
         </div>
-        <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
-                <span id="btn-text">Send Message</span>
-                <div class="loader" id="btn-loader"></div>
-            </button>
+        <form action="https://formspree.io/f/mdawzobw" method="POST" id="contact-form">
+            <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+            <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+            <textarea name="message" placeholder="Tell me about your project..." rows="5" required style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message</button>
         </form>
-        <div id="success-msg">✅ Message Sent Successfully!</div>
     </div>
 </section>
-
-<div class="lightbox" id="lightbox"><img id="lightbox-img"></div>
-<button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
 <footer>
     <div class="social">
@@ -338,18 +287,36 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
     <p style="margin-top:20px;">© <span id="year"></span> Engineer Brian Magothe. All Rights Reserved.</p>
 </footer>
 
+<button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
 <script>
-// MOBILE MENU
+// SCROLL REVEAL TRIGGER
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+            // Fill skill bars
+            const bars = reveals[i].querySelectorAll('.progress-fill');
+            bars.forEach(bar => bar.style.width = bar.getAttribute('data-percent'));
+        }
+    }
+}
+window.addEventListener("scroll", reveal);
+
+// MOBILE MENU LOGIC
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-list');
 menuToggle.onclick = () => { navLinks.classList.toggle('active'); };
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.onclick = () => { navLinks.classList.remove('active'); };
-});
+document.querySelectorAll('.nav-links a').forEach(l => l.onclick = () => navLinks.classList.remove('active'));
 
-// THEME TOGGLE (NOW WITH IMPROVED SIZE/GLOW)
+// THEME TOGGLE
+const themeBtn = document.getElementById("themeBtn");
 const themeIcon = document.getElementById("themeIcon");
-themeIcon.onclick = () => {
+themeBtn.onclick = () => {
     document.body.classList.toggle("dark-theme");
     themeIcon.classList.toggle("fa-moon"); 
     themeIcon.classList.toggle("fa-sun");
@@ -357,30 +324,12 @@ themeIcon.onclick = () => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// LIGHTBOX & SCROLL
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-document.querySelectorAll('.gallery-img').forEach(image => {
-  image.onclick = () => { lightbox.style.display = 'flex'; lightboxImg.src = image.src; };
-});
-lightbox.onclick = () => { lightbox.style.display = 'none'; };
-
+// SCROLL TO TOP
 const scrollTopBtn = document.getElementById("scrollTopBtn");
-window.onscroll = () => { scrollTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none"; };
-scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-// FORM
-const contactForm = document.getElementById('contact-form');
-contactForm.onsubmit = async (e) => {
-    e.preventDefault();
-    document.getElementById('btn-text').style.display = 'none';
-    document.getElementById('btn-loader').style.display = 'block';
-    const formData = new FormData(contactForm);
-    try {
-        const response = await fetch(contactForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-        if (response.ok) { document.getElementById('success-msg').style.display = 'block'; contactForm.reset(); }
-    } catch (error) { alert("Error."); }
-    finally { document.getElementById('btn-text').style.display = 'block'; document.getElementById('btn-loader').style.display = 'none'; }
+window.onscroll = () => { 
+    scrollTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none"; 
+    reveal(); 
 };
+scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 </script>
 </body></html>
