@@ -12,35 +12,35 @@
 :root {
     --primary: #1e3a8a;
     --accent: #fbbf24;
-    --text: #0f172a;
     --bg: #f8fafc;
-    /* LIGHT MODE FLAG: Soft pastel stripes */
-    --bg-flag: linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0.04) 0%,   
-        rgba(0, 0, 0, 0.04) 33.3%, 
-        rgba(255, 0, 0, 0.04) 33.3%, 
-        rgba(255, 0, 0, 0.04) 66.6%, 
-        rgba(251, 191, 36, 0.06) 66.6%, 
-        rgba(251, 191, 36, 0.06) 100%
-    );
-    --card: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    --text: #0f172a;
+    --card: rgba(255, 255, 255, 0.9);
     --toggle-bg: rgba(0,0,0,0.05);
+    /* LIGHT MODE FLAG: Increased opacity for visibility */
+    --flag-gradient: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.06) 0%, 
+        rgba(0, 0, 0, 0.06) 33.3%, 
+        rgba(224, 30, 44, 0.07) 33.3%, 
+        rgba(224, 30, 44, 0.07) 66.6%, 
+        rgba(255, 204, 0, 0.1) 66.6%, 
+        rgba(255, 204, 0, 0.1) 100%
+    );
 }
 
 body.dark-theme {
     --bg: #0f172a;
     --text: #f8fafc;
-    /* DARK MODE FLAG: Moody deep stripes */
-    --bg-flag: linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0.85) 0%, 
-        rgba(0, 0, 0, 0.85) 33.3%, 
-        rgba(153, 0, 0, 0.15) 33.3%, 
-        rgba(153, 0, 0, 0.15) 66.6%, 
-        rgba(184, 134, 11, 0.15) 66.6%, 
-        rgba(184, 134, 11, 0.15) 100%
-    );
-    --card: rgba(30, 41, 59, 0.7); /* Semi-transparent navy */
+    --card: rgba(30, 41, 59, 0.8);
     --toggle-bg: rgba(255,255,255,0.1);
+    /* DARK MODE FLAG: Subtler tones to avoid glare */
+    --flag-gradient: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.4) 0%, 
+        rgba(0, 0, 0, 0.4) 33.3%, 
+        rgba(153, 0, 0, 0.1) 33.3%, 
+        rgba(153, 0, 0, 0.1) 66.6%, 
+        rgba(184, 134, 11, 0.1) 66.6%, 
+        rgba(184, 134, 11, 0.1) 100%
+    );
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -48,37 +48,37 @@ body.dark-theme {
 body {
     font-family: Inter, sans-serif;
     background-color: var(--bg);
-    background-image: var(--bg-flag);
-    background-attachment: fixed; /* STAYS IN PLACE */
-    background-size: cover;
+    background-image: var(--flag-gradient);
+    background-attachment: fixed;
     color: var(--text);
     scroll-behavior: smooth;
     transition: 0.3s;
     overflow-x: hidden;
 }
 
-/* SCROLL REVEAL */
+/* SCROLL REVEAL ANIMATION */
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-.section { scroll-margin-top: 70px; padding: 100px 10%; background: transparent; }
+.section { scroll-margin-top: 70px; padding: 100px 10%; }
 
 /* NAVBAR */
 nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 1rem 5%; background: var(--card);
-    backdrop-filter: blur(10px); /* Glass blur */
+    backdrop-filter: blur(10px);
     position: sticky; top: 0; z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 .logo { display: flex; align-items: center; gap: 12px; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 20px; }
 .logo img { height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); animation: spinLogo 10s linear infinite; }
-@keyframes spinLogo { 0%{transform:rotateY(0deg)} 100%{transform:rotateY(360deg)} }
+@keyframes spinLogo { 0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)} }
 
 .nav-right-controls { display: flex; align-items: center; gap: 15px; }
 .theme-toggle-container { width: 45px; height: 45px; border-radius: 50%; background: var(--toggle-bg); display: flex; justify-content: center; align-items: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); }
 .theme-toggle-container:hover { transform: scale(1.1); background: var(--accent); }
 .theme-toggle { font-size: 1.2rem; color: var(--text); }
+
 .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
 .nav-links { display: flex; align-items: center; }
 .nav-links a { margin-left: 25px; text-decoration: none; font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; }
@@ -88,7 +88,7 @@ nav {
 .hero {
     min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center; color: white; padding: 0 10%; position: relative;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(255,0,0,0.2), rgba(255,204,0,0.25)),
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(224, 30, 44, 0.3), rgba(255, 204, 0, 0.4)),
     url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070");
     background-size: cover; background-position: center;
 }
@@ -99,46 +99,38 @@ nav {
 .btn-primary { background: #FFCC00; color: black; }
 .btn-light { background: white; color: #1e3a8a; }
 
-/* GLASS CARDS */
-.resume-item, .project, .review-card, #form-inner-container, #form-status-container, .expertise-box {
-    background: var(--card) !important;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border-radius: 12px;
-}
-
-/* RESUME */
+/* EXPERIENCE / EDUCATION */
 .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .resume-column h3 { margin-bottom: 25px; font-family: Montserrat, sans-serif; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
-.resume-item { margin-bottom: 30px; padding: 25px; border-left: 4px solid var(--primary); }
+.resume-item { margin-bottom: 30px; padding: 25px; border-left: 3px solid var(--primary); background: var(--card); border-radius: 0 12px 12px 0; }
 .resume-item h4 { font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 5px; }
 body.dark-theme .resume-item h4 { color: #60a5fa; }
 
 /* SKILLS */
 .skills-container { max-width: 900px; margin: 60px auto 0; padding: 20px; }
-.skill-bar-wrapper { margin-bottom: 45px; } 
+.skill-bar-wrapper { margin-bottom: 45px; }
 .skill-info { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600; font-size: 1.1rem; }
 .progress-bg { background: rgba(0,0,0,0.1); height: 10px; border-radius: 20px; overflow: hidden; }
 .progress-fill { background: var(--primary); height: 100%; width: 0; border-radius: 20px; transition: width 2s ease-in-out; }
 body.dark-theme .progress-bg { background: rgba(255,255,255,0.1); }
 
-/* PORTFOLIO */
+/* PROJECTS */
 .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
-.project { overflow: hidden; transition: 0.3s; }
+.project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
 .project img { width: 100%; height: 250px; object-fit: cover; }
 .project-content { padding: 20px; text-align: center; }
 .project.centered { grid-column: span 2; justify-self: center; width: 50%; }
 
-/* EXPERTISE BOXES */
-.expertise-box { padding: 30px; transition: 0.3s; }
-.expertise-box:hover { transform: translateY(-5px); border-top: 4px solid var(--accent); }
+/* REVIEWS (EXACTLY AS PROVIDED) */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.review-card { 
+    background: var(--card); padding: 40px 30px; border-radius: 12px; 
+    border-top: 5px solid var(--primary); box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
+    display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;
+}
+.review-card:hover { transform: translateY(-10px); }
 
-/* LOADER */
-.loader { width: 20px; height: 20px; border: 3px solid rgba(0, 0, 0, 0.1); border-radius: 50%; border-top-color: #000; animation: spin 0.8s linear infinite; display: none; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .menu-toggle { display: block; order: 3; }
     .theme-toggle-container { order: 2; margin-left: auto; margin-right: 15px; }
@@ -147,14 +139,11 @@ body.dark-theme .progress-bg { background: rgba(255,255,255,0.1); }
     .nav-links a { margin: 15px 0; width: 100%; justify-content: center; margin-left: 0; }
     .resume-grid, .portfolio-grid { grid-template-columns: 1fr; }
     .project.centered { grid-column: span 1; width: 100%; }
-    .hero h1 { font-size: 2.5rem; }
 }
 
 footer { background: #0f172a; color: white; text-align: center; padding: 60px 10%; margin-top: 50px; }
 .social a { font-size: 1.8rem; margin: 0 15px; color: white; transition: 0.3s; text-decoration: none; }
 #scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; border: none; z-index: 1000; }
-
-#form-status-container { display: none; text-align: center; padding: 40px 20px; }
 </style>
 </head>
 <body>
@@ -191,7 +180,7 @@ footer { background: #0f172a; color: white; text-align: center; padding: 60px 10
 <section class="section reveal" id="profile">
     <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Professional Profile</h2>
     <p style="max-width:800px; margin:0 auto 60px; text-align:center; line-height:1.8;">
-        Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He focuses on accurate structural representation and professional construction planning.
+        Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
     </p>
 
     <div class="resume-grid">
@@ -218,7 +207,7 @@ footer { background: #0f172a; color: white; text-align: center; padding: 60px 10
             <div class="resume-item">
                 <h4>German Language Certification</h4>
                 <span>B2 Level</span> 
-                <p>Advanced proficiency in German, providing specialized tutoring for academic candidates.</p>
+                <p>Advanced proficiency in German language, now providing tutoring for academic candidates.</p>
             </div>
         </div>
     </div>
@@ -243,17 +232,17 @@ footer { background: #0f172a; color: white; text-align: center; padding: 60px 10
 <section class="section reveal" id="expertise">
     <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Expertise</h2>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;">
-        <div class="expertise-box">
+        <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
             <i class="fas fa-drafting-compass" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
             <h3>AutoCAD Engineering</h3>
             <p>Precision engineering drafting for structural and construction designs.</p>
         </div>
-        <div class="expertise-box">
+        <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
             <i class="fas fa-palette" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
             <h3>Graphic Design</h3>
             <p>Modern branding, logo creation and visual communication design.</p>
         </div>
-        <div class="expertise-box">
+        <div style="background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
             <i class="fas fa-language" style="font-size:2rem; color:var(--accent); margin-bottom:15px;"></i>
             <h3>German Tutor</h3>
             <p>Professional German language lessons for academic and career preparation.</p>
@@ -264,42 +253,50 @@ footer { background: #0f172a; color: white; text-align: center; padding: 60px 10
 <section class="section reveal" id="projects">
     <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Featured Projects</h2>
     <div class="portfolio-grid">
-        <div class="project"><img src="projects/projects/project1.jpg"><div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project and digital assets.</p></div></div>
-        <div class="project"><img src="projects/projects/project2.jpg"><div class="project-content"><h3>Structural Drafting</h3><p>Detailed AutoCAD drawing prepared for construction.</p></div></div>
-        <div class="project centered"><img src="projects/projects/project3.jpg"><div class="project-content"><h3>Engineering Visualization</h3><p>Concept visualization for building design layouts.</p></div></div>
+        <div class="project"><img src="projects/projects/project1.jpg"><div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design and digital assets.</p></div></div>
+        <div class="project"><img src="projects/projects/project2.jpg"><div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction site.</p></div></div>
+        <div class="project centered"><img src="projects/projects/project3.jpg"><div class="project-content"><h3>Engineering Visualization</h3><p>Engineering concept visualization used to present building design layout.</p></div></div>
     </div>
 </section>
 
 <section class="section reveal" id="reviews">
     <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Client Testimonials</h2>
     <div class="reviews-grid">
-        <div class="review-card"><p style="font-style:italic;">"Brian delivered very accurate AutoCAD drawings. His attention to detail is top-tier."</p><strong>- Site Engineer, Nairobi</strong></div>
-        <div class="review-card"><p style="font-style:italic;">"Excellent graphic design work. Turned our rough concept into a professional identity."</p><strong>- Marketing Director</strong></div>
-        <div class="review-card"><p style="font-style:italic;">"Great German tutor with very clear explanations. Made complex grammar simple."</p><strong>- B1 Candidate</strong></div>
+        <div class="review-card">
+            <p style="font-style:italic; margin-bottom:20px;">"Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."</p>
+            <strong>- Site Engineer, Nairobi</strong>
+        </div>
+        <div class="review-card">
+            <p style="font-style:italic; margin-bottom:20px;">"Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."</p>
+            <strong>- Marketing Director</strong>
+        </div>
+        <div class="review-card">
+            <p style="font-style:italic; margin-bottom:20px;">"Great German tutor with very clear explanations. He made complex grammar feel very simple."</p>
+            <strong>- B1 Candidate</strong>
+        </div>
     </div>
 </section>
 
 <section class="section reveal" id="contact">
     <h2 style="text-align:center; margin-bottom:60px; font-family: Montserrat;">Get In Touch</h2>
     <div style="max-width:600px; margin:auto;">
-        <div id="form-status-container">
+        <div id="form-status-container" style="display:none; text-align:center; padding:40px; background:var(--card); border-radius:12px;">
             <i id="status-icon" class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px; color:#22c55e;"></i>
             <h3 id="status-title">Sent!</h3>
             <p id="status-message">Vielen Dank! Your message has been received.</p>
-            <button onclick="resetForm()" class="btn btn-primary">Go Back</button>
+            <button onclick="resetForm()" class="btn btn-primary" style="margin-top:20px;">Go Back</button>
         </div>
-        <div id="form-inner-container" style="padding: 30px;">
+        <div id="form-inner-container">
             <div style="display:flex; gap:10px; margin-bottom:30px;">
                 <a href="https://wa.me/254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="tel:+254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fas fa-phone-alt"></i> Call</a>
+                <a href="tel:+254742409512" class="btn btn-primary" style="flex:1; justify-content:center;"><i class="fas fa-phone-alt"></i> Call Me</a>
             </div>
             <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
-                <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:rgba(255,255,255,0.1); color:var(--text);">
-                <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:rgba(255,255,255,0.1); color:var(--text);">
-                <textarea name="message" placeholder="Project details..." rows="5" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:rgba(255,255,255,0.1); color:var(--text);"></textarea>
-                <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; justify-content:center; gap:15px;">
+                <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+                <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+                <textarea name="message" placeholder="Tell me about your project..." rows="5" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
+                <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; justify-content:center; gap: 15px;">
                     <span id="btn-text">Send Message</span>
-                    <div class="loader" id="loader"></div>
                 </button>
             </form>
         </div>
@@ -353,40 +350,22 @@ window.onscroll = () => {
 scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
 const form = document.getElementById('contact-form');
-const submitBtn = document.getElementById('submit-btn');
-const btnText = document.getElementById('btn-text');
-const loader = document.getElementById('loader');
 const formInner = document.getElementById('form-inner-container');
 const statusBox = document.getElementById('form-status-container');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    submitBtn.disabled = true;
-    btnText.textContent = 'Sending...';
-    loader.style.display = 'block';
     const formData = new FormData(form);
-    try {
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-            formInner.style.display = 'none';
-            statusBox.style.display = 'block';
-            form.reset();
-        }
-    } catch (error) {
-        btnText.textContent = 'Error. Use WhatsApp.';
+    const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+    if (response.ok) {
+        formInner.style.display = 'none';
+        statusBox.style.display = 'block';
     }
 });
 
 function resetForm() {
     statusBox.style.display = 'none';
     formInner.style.display = 'block';
-    submitBtn.disabled = false;
-    btnText.textContent = 'Send Message';
-    loader.style.display = 'none';
 }
 
 reveal();
