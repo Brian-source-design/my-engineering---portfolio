@@ -220,7 +220,23 @@
         .social-links a:hover {
             color: #fbbf24 !important; 
         }
-        @media (max-width: 768px) { .skills-container { grid-template-columns: 1fr; } .hero h1 { font-size: 2.8rem; } nav .nav-links a { display: none; } }
+        @media (max-width: 768px) { 
+    .skills-container { grid-template-columns: 1fr; } 
+    .hero h1 { font-size: 2.8rem; } 
+    
+    /* Add this for the footer icons on mobile */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .social-links a {
+        margin: 10px; /* Gives them more "tapping" space for fingers */
+        font-size: 2rem; /* Slightly larger for easier clicking */
+    }
+}
     </style>
 </head>
 <body id="top">
