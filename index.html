@@ -19,166 +19,82 @@ body{
 font-family:Inter;background:var(--bg);color:var(--text);scroll-behavior:smooth;transition:0.3s;
 }
 
-/* Added a fix so sections don't hide behind the navbar when you click a link */
-.section {
-scroll-margin-top: 70px;
-}
+.section { scroll-margin-top: 70px; padding: 100px 10%; }
 
 /* NAVBAR */
 nav{
 display:flex;justify-content:space-between;align-items:center;
-padding:1rem 10%;
-background:var(--card);
-position:sticky;top:0;
-z-index:1000;
+padding:1rem 10%; background:var(--card);
+position:sticky;top:0; z-index:1000;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 .logo{
 display:flex;align-items:center;gap:12px;
 font-family:Montserrat;font-weight:700;font-size:20px;
 }
-.logo img{
-height:40px;
-animation:spinLogo 10s linear infinite;
-}
-@keyframes spinLogo{
-0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}
-}
+.logo img{ height:40px; animation:spinLogo 10s linear infinite; }
+@keyframes spinLogo{ 0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)} }
+
 nav a{
 margin-left:25px;text-decoration:none;font-weight:600;color:var(--text);
-display: inline-flex; align-items: center; gap: 8px; /* Keeps icon and text aligned */
+display: inline-flex; align-items: center; gap: 8px;
 }
+nav a i { color: var(--accent); font-size: 0.9rem; }
+.theme-toggle{ margin-left:20px; cursor:pointer; }
 
-/* Small style for icons in nav */
-nav a i {
-color: var(--accent);
-font-size: 0.9rem;
-}
-
-.theme-toggle{
-margin-left:20px;cursor:pointer;
-}
 /* HERO */
 .hero{
-min-height:100vh;
-display:flex;flex-direction:column;justify-content:center;align-items:center;
-text-align:center;
-background:
-linear-gradient(to bottom,rgba(0,0,0,0.85),rgba(255,0,0,0.35),rgba(255,204,0,0.45)),
+min-height:100vh; display:flex;flex-direction:column;justify-content:center;align-items:center;
+text-align:center; color:white; padding:0 10%; position:relative;
+background: linear-gradient(to bottom,rgba(0,0,0,0.85),rgba(255,0,0,0.35),rgba(255,204,0,0.45)),
 url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070");
 background-size:cover;background-position:center;
-color:white;
-padding:0 10%;
-position:relative;
 }
-.hero h1{
-font-size:4rem;font-family:Montserrat;text-shadow:2px 2px 10px black;
-}
-.hero p{
-margin-top:15px;max-width:750px;font-size:1.2rem;text-shadow:1px 1px 6px black;
-}
+.hero h1{ font-size:4rem; font-family:Montserrat; text-shadow:2px 2px 10px black; }
+.hero p{ margin-top:15px; max-width:750px; font-size:1.2rem; text-shadow:1px 1px 6px black; }
+
 /* BUTTONS */
 .btn{
-padding:14px 30px;border-radius:8px;text-decoration:none;font-weight:700;
-display:inline-flex;align-items:center;gap:10px;
-margin:15px 10px;
+padding:14px 30px; border-radius:8px; text-decoration:none; font-weight:700;
+display:inline-flex; align-items:center; gap:10px; margin:15px 10px;
 }
-.btn-primary{
-background:#FFCC00;color:black;
-}
-.btn-light{
-background:white;color:#1e3a8a;
-}
-/* SCROLL ARROW */
-.scroll-indicator{
-position:absolute;bottom:30px;
-font-size:2rem;color:white;
-cursor:pointer;
-animation:bounce 2s infinite;transition:opacity 0.4s;
-}
-@keyframes bounce{
-0%{transform:translateY(0)}50%{transform:translateY(12px)}100%{transform:translateY(0)}
-}
-/* SECTIONS */
-.section{
-padding:100px 10%;
-}
-.section-title{
-text-align:center;font-family:Montserrat;font-size:2.5rem;
-margin-bottom:60px;
-}
-/* PROFILE */
-.profile{
-max-width:800px;margin:auto;text-align:center;line-height:1.8;
-}
-/* GRID */
-.grid{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;
-}
-/* CARDS */
-.card{
-background:var(--card);padding:30px;
-border-radius:12px;
-box-shadow:0 10px 20px rgba(0,0,0,0.05);
-}
-/* PROJECTS */
-.portfolio{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;
-}
-.project{
-background:var(--card);border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 20px rgba(0,0,0,0.05);
-}
-.project img{
-width:100%;cursor:pointer;
-transition: 0.3s ease;
-}
-.project img:hover {
-opacity: 0.8;
-}
-.project-content{
-padding:20px;
-}
+.btn-primary{ background:#FFCC00; color:black; border:none; cursor:pointer; font-family:Inter; }
+.btn-light{ background:white; color:#1e3a8a; }
+
+/* SKILLS SECTION */
+.skills-container { max-width: 800px; margin: 0 auto; }
+.skill-bar-wrapper { margin-bottom: 20px; }
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
+.progress-bg { background: #e2e8f0; height: 12px; border-radius: 10px; overflow: hidden; }
+.progress-fill { background: var(--primary); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
+body.dark-theme .progress-bg { background: #334155; }
+body.dark-theme .progress-fill { background: var(--accent); }
+
+/* GRID & CARDS */
+.section-title{ text-align:center; font-family:Montserrat; font-size:2.5rem; margin-bottom:60px; }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+.card{ background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
+
 /* REVIEWS */
-.reviews{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;
-}
-.review{
-background:var(--card);padding:25px;
-border-radius:12px;
-border-top:4px solid var(--primary);
-}
+.review{ background:var(--card); padding:25px; border-radius:12px; border-top:4px solid var(--primary); position: relative; }
+.review i.quote-icon { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; display: block; }
+.client-name { margin-top: 15px; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+
 /* LIGHTBOX */
-.lightbox{
-position:fixed;top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.9);
-display:none;justify-content:center;align-items:center;
-z-index:2000;
-}
-.lightbox img{
-max-width:90%;max-height:90%;
-border: 2px solid white;
-}
+.lightbox{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; }
+.lightbox img{ max-width:90%; max-height:90%; border: 2px solid white; }
+
 /* CONTACT */
-form input,form textarea{
-width:100%;padding:15px;
-margin-bottom:20px;
-border-radius:8px;border:1px solid #ddd;
-background:var(--card);color:var(--text);
-}
+.contact-form-container { max-width: 600px; margin: 0 auto; text-align: center; }
+form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; background: var(--card); color: var(--text); font-family: Inter; }
+
 /* FOOTER */
-footer{
-background:#0f172a;color:white;
-text-align:center;padding:60px 10%;
-}
-.social a{
-font-size:1.8rem;margin:0 15px;color:white;
-}
+footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; }
+.social a{ font-size:1.8rem; margin:0 15px; color:white; }
 </style>
 </head>
 <body>
+
 <nav>
 <div class="logo"><img src="logo.png">ENG. BRIAN MAGOTHE</div>
 <div>
@@ -190,23 +106,42 @@ font-size:1.8rem;margin:0 15px;color:white;
 <i class="fas fa-moon theme-toggle" id="themeIcon"></i>
 </div>
 </nav>
+
 <header class="hero">
 <h1>Brian Magothe</h1>
 <p>Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor</p>
 <div>
 <a href="#contact" class="btn btn-primary">Connect With Me</a>
-<a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-light"><i class="fa fa-eye"></i> Preview CV</a>
-<a href="CV_Brian_Magothe.pdf" download class="btn btn-primary"><i class="fa fa-download"></i> Download CV</a>
+<a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-light"><i class="fa fa-eye"></i> Preview</a>
+<a href="CV_Brian_Magothe.pdf" download class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
 </div>
-<div class="scroll-indicator" id="scrollArrow"><i class="fas fa-angle-down"></i></div>
 </header>
+
 <section class="section" id="profile">
 <h2 class="section-title">Professional Profile</h2>
-<p class="profile">
-Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
-Brian also works in graphic design, creating brand identities and marketing visuals, and provides German tutoring for students and professionals pursuing international academic and career opportunities.
+<p style="max-width:800px; margin:auto; text-align:center; line-height:1.8;">
+Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He provides German tutoring and graphic design services, bridging the gap between technical precision and creative communication.
 </p>
 </section>
+
+<section class="section" id="skills">
+<h2 class="section-title">Technical Skills</h2>
+<div class="skills-container">
+    <div class="skill-bar-wrapper">
+        <div class="skill-info"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
+        <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
+    </div>
+    <div class="skill-bar-wrapper">
+        <div class="skill-info"><span>Graphic Design & Branding</span><span>85%</span></div>
+        <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
+    </div>
+    <div class="skill-bar-wrapper">
+        <div class="skill-info"><span>German Language (Instruction)</span><span>90%</span></div>
+        <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
+    </div>
+</div>
+</section>
+
 <section class="section" id="expertise">
 <h2 class="section-title">Expertise</h2>
 <div class="grid">
@@ -215,73 +150,82 @@ Brian also works in graphic design, creating brand identities and marketing visu
 <div class="card"><h3>German Tutor</h3><p>Professional German language lessons for academic and career preparation.</p></div>
 </div>
 </section>
+
 <section class="section" id="projects">
 <h2 class="section-title">Projects</h2>
-<div class="portfolio">
-<div class="project"><img src="projects/projects/project1.jpg" class="gallery-img"><div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design, color systems and digital marketing materials.</p></div></div>
-<div class="project"><img src="projects/projects/project2.jpg" class="gallery-img"><div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction planning project.</p></div></div>
-<div class="project"><img src="projects/projects/project3.jpg" class="gallery-img"><div class="project-content"><h3>Engineering Visualization</h3><p>Engineering concept visualization used to present building design layout and structure.</p></div></div>
+<div class="grid">
+<div class="card" style="padding:0; overflow:hidden;">
+    <img src="projects/projects/project1.jpg" class="gallery-img" style="width:100%; cursor:pointer;">
+    <div style="padding:20px;"><h3>Brand Identity</h3><p>Logo design and digital assets.</p></div>
+</div>
+<div class="card" style="padding:0; overflow:hidden;">
+    <img src="projects/projects/project2.jpg" class="gallery-img" style="width:100%; cursor:pointer;">
+    <div style="padding:20px;"><h3>Structural Layout</h3><p>AutoCAD construction plans.</p></div>
+</div>
 </div>
 </section>
+
 <section class="section" id="reviews">
 <h2 class="section-title">Client Reviews</h2>
-<div class="reviews">
-<div class="review"><p>"Brian delivered very accurate AutoCAD drawings for our building project."</p></div>
-<div class="review"><p>"Excellent graphic design work. Very professional."</p></div>
-<div class="review"><p>"Great German tutor with very clear explanations."</p></div>
+<div class="grid">
+<div class="review">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>"Brian delivered very accurate AutoCAD drawings for our building project. Highly recommended!"</p>
+    <div class="client-name"><i class="fas fa-user-circle"></i> Project Architect</div>
+</div>
+<div class="review">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>"Excellent graphic design work. He really understood our brand identity perfectly."</p>
+    <div class="client-name"><i class="fas fa-user-circle"></i> Startup Founder</div>
+</div>
+<div class="review">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>"Great German tutor with very clear explanations. I passed my A1 exam thanks to him!"</p>
+    <div class="client-name"><i class="fas fa-user-circle"></i> Language Student</div>
+</div>
 </div>
 </section>
 
 <div class="lightbox" id="lightbox"><img id="lightbox-img"></div>
 
 <section class="section" id="contact">
-<h2 class="section-title">Contact</h2>  <br>
-<a href="https://wa.me/254742409512" class="btn btn-primary" style="width:100%;justify-content:center">
-<i class="fab fa-whatsapp"></i> Join WhatsApp
-</a>
-<form>
-<input type="text" placeholder="Full Name">
-<input type="email" placeholder="Email Address">
-<textarea rows="5" placeholder="Project Details"></textarea>
-<button class="btn btn-primary" style="width:100%">Send Message</button>
-</form>
+<h2 class="section-title">Contact Me</h2>
+<div class="contact-form-container">
+    <a href="https://wa.me/254742409512" class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom:30px;">
+    <i class="fab fa-whatsapp"></i> Join WhatsApp
+    </a>
+    <form>
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <textarea rows="5" placeholder="Project Details" required></textarea>
+    <div style="display:flex; justify-content:center;">
+        <button class="btn btn-primary" style="width:100%; font-weight:900; text-transform:uppercase; letter-spacing:1px;">Send Message</button>
+    </div>
+    </form>
+</div>
 </section>
+
 <footer>
 <div class="social">
 <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
 </div>
-<p>© <span id="year"></span> Engineer Brian Magothe</p>
+<p style="margin-top:20px;">© <span id="year"></span> Engineer Brian Magothe</p>
 </footer>
+
 <script>
 const themeIcon=document.getElementById("themeIcon");
 themeIcon.onclick=()=>{
 document.body.classList.toggle("dark-theme");
-if(document.body.classList.contains("dark-theme")){themeIcon.classList.replace("fa-moon","fa-sun");}else{themeIcon.classList.replace("fa-sun","fa-moon");}
+themeIcon.classList.toggle("fa-sun");
+themeIcon.classList.toggle("fa-moon");
 }
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* Scroll arrow */
-const arrow=document.getElementById("scrollArrow");
-arrow.onclick=()=>{
-document.querySelector("#profile").scrollIntoView({behavior:"smooth"});
-}
-window.addEventListener("scroll",()=>{
-if(window.scrollY>100){arrow.style.opacity="0";}else{arrow.style.opacity="1";}
-});
-
-/* NEW: Lightbox Logic - Makes images pop up when clicked */
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
-
-document.querySelectorAll('.gallery-img').forEach(image => {
-  image.onclick = () => {
-    lightbox.style.display = 'flex';
-    lightboxImg.src = image.src;
-  };
+document.querySelectorAll('.gallery-img').forEach(img => {
+  img.onclick = () => { lightbox.style.display = 'flex'; lightboxImg.src = img.src; };
 });
-
-lightbox.onclick = () => {
-  lightbox.style.display = 'none';
-};
+lightbox.onclick = () => { lightbox.style.display = 'none'; };
 </script>
 </body></html>
