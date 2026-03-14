@@ -9,9 +9,7 @@
 
 <title>Brian Magothe | Civil Engineer & AutoCAD Specialist</title>
 
-<meta name="description" content="Portfolio of Brian Magothe. Civil Engineering, AutoCAD drafting, structural detailing, graphic design and German tutoring services in Kenya.">
-
-<meta name="keywords" content="Civil Engineer Kenya, AutoCAD Designer Kenya, Structural Drafting Kenya, German Tutor Kenya, Brian Magothe Engineer">
+<meta name="description" content="Portfolio of Brian Magothe – Civil Engineering specialist, AutoCAD designer, graphic designer and German tutor in Kenya.">
 
 <link rel="icon" href="favicon-32x32.png">
 
@@ -19,11 +17,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
 <style>
 
-/* VARIABLES */
+/* ---------- VARIABLES ---------- */
 
 :root{
 
@@ -38,7 +34,7 @@
 
 }
 
-/* DARK MODE */
+/* ---------- DARK MODE ---------- */
 
 body.dark-theme{
 
@@ -48,12 +44,12 @@ body.dark-theme{
 
 }
 
-/* BASE */
+/* ---------- BASE ---------- */
 
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
 }
 
 body{
@@ -61,12 +57,12 @@ body{
 font-family:Inter;
 background:var(--bg);
 color:var(--text);
-transition:0.3s;
 scroll-behavior:smooth;
+transition:0.3s;
 
 }
 
-/* NAVBAR */
+/* ---------- NAVBAR ---------- */
 
 nav{
 
@@ -75,11 +71,11 @@ justify-content:space-between;
 align-items:center;
 
 padding:1rem 10%;
-
 background:var(--card);
 
 position:sticky;
 top:0;
+
 z-index:1000;
 
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
@@ -88,35 +84,15 @@ box-shadow:0 2px 10px rgba(0,0,0,0.05);
 
 .logo{
 
-display:flex;
-align-items:center;
-gap:12px;
-
 font-family:Montserrat;
 font-weight:700;
 
 }
 
-.logo img{
-
-height:40px;
-
-animation:spin 12s linear infinite;
-
-}
-
-@keyframes spin{
-
-0%{transform:rotateY(0)}
-
-100%{transform:rotateY(360deg)}
-
-}
-
 nav a{
 
-text-decoration:none;
 margin-left:25px;
+text-decoration:none;
 font-weight:600;
 color:var(--text);
 
@@ -129,13 +105,18 @@ cursor:pointer;
 
 }
 
-/* HERO */
+/* ---------- HERO ---------- */
 
 .hero{
 
-padding:160px 10% 120px;
+min-height:100vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
 text-align:center;
-color:var(--heroText);
 
 background:
 
@@ -151,39 +132,47 @@ url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070");
 background-size:cover;
 background-position:center;
 
+color:white;
+
+padding:0 10%;
+
 }
 
 .hero h1{
 
 font-size:4rem;
 font-family:Montserrat;
+
 text-shadow:2px 2px 10px black;
 
 }
 
 .hero p{
 
-max-width:750px;
-margin:auto;
 margin-top:15px;
+max-width:750px;
 
 font-size:1.2rem;
+
 text-shadow:1px 1px 6px black;
 
 }
 
-/* BUTTONS */
+/* ---------- HERO BUTTONS ---------- */
 
 .btn{
 
 padding:14px 30px;
 border-radius:8px;
-font-weight:700;
+
 text-decoration:none;
+font-weight:700;
+
 display:inline-flex;
 align-items:center;
 gap:10px;
-margin:10px;
+
+margin:15px 10px;
 
 }
 
@@ -197,11 +186,31 @@ color:black;
 .btn-light{
 
 background:white;
-color:var(--primary);
+color:#1e3a8a;
 
 }
 
-/* SECTION */
+/* ---------- SCROLL INDICATOR ---------- */
+
+.scroll-indicator{
+
+position:absolute;
+bottom:30px;
+
+font-size:2rem;
+animation:scroll 2s infinite;
+
+}
+
+@keyframes scroll{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(10px)}
+100%{transform:translateY(0)}
+
+}
+
+/* ---------- SECTIONS ---------- */
 
 .section{
 
@@ -211,54 +220,27 @@ padding:100px 10%;
 
 .section-title{
 
-font-family:Montserrat;
-font-size:2.5rem;
 text-align:center;
+font-family:Montserrat;
+
+font-size:2.5rem;
+
 margin-bottom:60px;
 
 }
 
-/* PROFILE */
+/* ---------- PROFILE ---------- */
 
 .profile{
 
 max-width:800px;
 margin:auto;
 text-align:center;
-line-height:1.7;
+line-height:1.8;
 
 }
 
-/* STATS */
-
-.stats{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
-margin-top:50px;
-
-}
-
-.stat{
-
-background:var(--card);
-padding:30px;
-border-radius:12px;
-text-align:center;
-
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
-
-}
-
-.stat h3{
-
-font-size:2rem;
-color:var(--primary);
-
-}
-
-/* EXPERTISE */
+/* ---------- GRID ---------- */
 
 .grid{
 
@@ -268,76 +250,54 @@ gap:30px;
 
 }
 
+/* ---------- CARDS ---------- */
+
 .card{
 
 background:var(--card);
 padding:30px;
-border-radius:15px;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
+border-radius:12px;
+
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
 
 }
 
-/* PORTFOLIO */
+/* ---------- PORTFOLIO ---------- */
 
 .portfolio{
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+
+}
+
+.project{
+
+background:var(--card);
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
 
 }
 
 .project img{
 
 width:100%;
-border-radius:10px;
 cursor:pointer;
 
 }
 
-/* LIGHTBOX */
+.project-content{
 
-.lightbox{
-
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:rgba(0,0,0,0.9);
-
-display:none;
-
-justify-content:center;
-align-items:center;
-
-z-index:2000;
+padding:20px;
 
 }
 
-.lightbox img{
-
-max-width:90%;
-max-height:90%;
-
-}
-
-/* 3D MODEL VIEWER */
-
-model-viewer{
-
-width:100%;
-height:500px;
-
-background:var(--card);
-border-radius:15px;
-
-}
-
-/* REVIEWS */
+/* ---------- REVIEWS ---------- */
 
 .reviews{
 
@@ -358,17 +318,45 @@ border-top:4px solid var(--primary);
 
 }
 
-/* CONTACT */
+/* ---------- LIGHTBOX ---------- */
+
+.lightbox{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.9);
+
+display:none;
+justify-content:center;
+align-items:center;
+
+z-index:2000;
+
+}
+
+.lightbox img{
+
+max-width:90%;
+max-height:90%;
+
+}
+
+/* ---------- CONTACT ---------- */
 
 form input,
 form textarea{
 
 width:100%;
 padding:15px;
+
 margin-bottom:20px;
 
 border-radius:8px;
-
 border:1px solid #ddd;
 
 background:var(--card);
@@ -376,34 +364,24 @@ color:var(--text);
 
 }
 
-/* FOOTER */
+/* ---------- FOOTER ---------- */
 
 footer{
 
 background:#0f172a;
 color:white;
+
 text-align:center;
+
 padding:60px 10%;
 
 }
 
 .social a{
 
-color:white;
 font-size:1.8rem;
 margin:0 15px;
-
-}
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:2.8rem;
-}
-
-nav{
-flex-wrap:wrap;
-}
+color:white;
 
 }
 
@@ -415,17 +393,13 @@ flex-wrap:wrap;
 
 <nav>
 
-<div class="logo">
-<img src="logo.png">
-ENG. BRIAN MAGOTHE
-</div>
+<div class="logo">ENG. BRIAN MAGOTHE</div>
 
 <div>
 
 <a href="#profile">Profile</a>
 <a href="#expertise">Expertise</a>
-<a href="#work">Projects</a>
-<a href="#models">3D Models</a>
+<a href="#projects">Projects</a>
 <a href="#reviews">Reviews</a>
 <a href="#contact">Contact</a>
 
@@ -440,19 +414,22 @@ ENG. BRIAN MAGOTHE
 <h1>Brian Magothe</h1>
 
 <p>
-
 Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor
-
 </p>
+
+<div>
 
 <a href="#contact" class="btn btn-primary">Connect With Me</a>
 
-<a href="CV_Brian_Magothe.pdf" class="btn btn-light" download>
-
-<i class="fa fa-download"></i>
-Download CV
-
+<a href="CV_Brian_Magothe.pdf" class="btn btn-light">
+<i class="fa fa-download"></i> Download CV
 </a>
+
+</div>
+
+<div class="scroll-indicator">
+<i class="fas fa-angle-down"></i>
+</div>
 
 </header>
 
@@ -462,28 +439,13 @@ Download CV
 
 <p class="profile">
 
-Civil engineering specialist with expertise in AutoCAD drafting, structural detailing and engineering visualization.
+Brian Magothe is a civil engineering specialist with strong expertise in AutoCAD drafting, structural detailing and engineering visualization. 
+He has worked on a variety of design projects including construction layouts, structural drawings and visual engineering presentations.
+
+Brian also provides professional graphic design services for businesses and individuals, creating modern brand identities and visual content. 
+In addition, he offers German language tutoring for students and professionals preparing for international study and career opportunities.
 
 </p>
-
-<div class="stats">
-
-<div class="stat">
-<h3>50+</h3>
-<p>Design Projects</p>
-</div>
-
-<div class="stat">
-<h3>30+</h3>
-<p>Happy Clients</p>
-</div>
-
-<div class="stat">
-<h3>5+</h3>
-<p>Years Experience</p>
-</div>
-
-</div>
 
 </section>
 
@@ -495,62 +457,81 @@ Civil engineering specialist with expertise in AutoCAD drafting, structural deta
 
 <div class="card">
 <h3>AutoCAD Engineering</h3>
-<p>Precision 2D and 3D drafting.</p>
+<p>High precision 2D and 3D drafting for civil engineering, construction layouts and structural detailing.</p>
 </div>
 
 <div class="card">
 <h3>Graphic Design</h3>
-<p>Brand identity and marketing visuals.</p>
+<p>Brand identity design, logos, marketing graphics and digital visual content for businesses.</p>
 </div>
 
 <div class="card">
 <h3>German Tutor</h3>
-<p>Professional language instruction.</p>
+<p>Professional German lessons for beginners and intermediate learners preparing for academic or professional opportunities.</p>
 </div>
 
 </div>
 
 </section>
 
-<section class="section" id="work">
+<section class="section" id="projects">
 
 <h2 class="section-title">Projects</h2>
 
 <div class="portfolio">
 
 <div class="project">
+
 <img src="projects/Graphic Design Photo 1.jpg" loading="lazy">
+
+<div class="project-content">
+
+<h3>Brand Identity Design</h3>
+
+<p>
+A complete branding design project including logo creation, brand color development and marketing visuals for a modern business brand.
+The project focused on creating a clean and memorable visual identity suitable for both digital and print media.
+</p>
+
+</div>
+
 </div>
 
 <div class="project">
+
 <img src="projects/Auto Cad design Photo 2.jpg" loading="lazy">
+
+<div class="project-content">
+
+<h3>Structural Layout Drafting</h3>
+
+<p>
+Detailed AutoCAD structural drawing developed for a building project. 
+The design included precise measurements, structural components and engineering layout planning to support construction accuracy.
+</p>
+
+</div>
+
 </div>
 
 <div class="project">
+
 <img src="projects/AutoCad design Photo 1.jpg" loading="lazy">
-</div>
+
+<div class="project-content">
+
+<h3>Engineering Design Visualization</h3>
+
+<p>
+Engineering visualization created to demonstrate the structure and layout of a construction design.
+The project focused on clear presentation of engineering concepts and accurate technical representation.
+</p>
 
 </div>
 
-</section>
+</div>
 
-<section class="section" id="models">
-
-<h2 class="section-title">3D Engineering Model</h2>
-
-<model-viewer
-
-src="models/engineering-model.glb"
-
-auto-rotate
-
-camera-controls
-
-shadow-intensity="1"
-
-ar
-
-></model-viewer>
+</div>
 
 </section>
 
@@ -561,18 +542,24 @@ ar
 <div class="reviews">
 
 <div class="review">
-<p>"Brian's AutoCAD designs were extremely precise and professional."</p>
-<strong>John D.</strong>
+
+<p>"Brian delivered very precise AutoCAD drawings for our project. His attention to detail was excellent."</p>
+<strong>Project Client</strong>
+
 </div>
 
 <div class="review">
-<p>"Excellent graphic design work for my brand."</p>
-<strong>Kevin M.</strong>
+
+<p>"Very professional graphic design work. The branding he created helped improve our business image."</p>
+<strong>Business Owner</strong>
+
 </div>
 
 <div class="review">
-<p>"Great German tutor with clear explanations."</p>
-<strong>Elena S.</strong>
+
+<p>"Great German tutor with clear explanations and structured lessons."</p>
+<strong>Student</strong>
+
 </div>
 
 </div>
@@ -585,7 +572,7 @@ ar
 
 <section class="section" id="contact">
 
-<h2 class="section-title">Let's Work Together</h2>
+<h2 class="section-title">Contact</h2>
 
 <form action="https://formspree.io/f/mdawzobw" method="POST">
 
@@ -603,9 +590,7 @@ ar
 
 <a href="https://wa.me/254742409512" class="btn btn-primary" style="width:100%;justify-content:center">
 
-<i class="fab fa-whatsapp"></i>
-
-Contact via WhatsApp
+<i class="fab fa-whatsapp"></i> Contact via WhatsApp
 
 </a>
 
@@ -643,7 +628,7 @@ themeIcon.classList.replace("fa-sun","fa-moon");
 
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* IMAGE VIEWER */
+/* LIGHTBOX */
 
 const lightbox=document.getElementById("lightbox");
 const lightboxImg=document.getElementById("lightbox-img");
@@ -651,14 +636,18 @@ const lightboxImg=document.getElementById("lightbox-img");
 document.querySelectorAll(".project img").forEach(img=>{
 
 img.onclick=()=>{
+
 lightbox.style.display="flex";
 lightboxImg.src=img.src;
+
 }
 
 });
 
 lightbox.onclick=()=>{
+
 lightbox.style.display="none";
+
 }
 
 </script>
