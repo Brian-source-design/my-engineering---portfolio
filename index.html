@@ -21,7 +21,7 @@ font-family:Inter;background:var(--bg);color:var(--text);scroll-behavior:smooth;
 
 .section { scroll-margin-top: 70px; padding: 100px 10%; }
 
-/* NAVBAR & MOBILE MENU */
+/* NAVBAR & HAMBURGER */
 nav{
 display:flex;justify-content:space-between;align-items:center;
 padding:1rem 5%; background:var(--card);
@@ -66,8 +66,17 @@ white-space: nowrap;
 .btn-primary{ background:#FFCC00; color:black; border:none; cursor:pointer; }
 .btn-light{ background:white; color:#1e3a8a; border:none; }
 
+/* RESUME / TIMELINE */
+.resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.resume-column h3 { margin-bottom: 25px; font-family: Montserrat; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+.resume-item { margin-bottom: 30px; padding-left: 20px; border-left: 2px solid var(--primary); }
+.resume-item h4 { font-size: 1.1rem; color: var(--primary); }
+body.dark-theme .resume-item h4 { color: var(--accent); }
+.resume-item span { font-size: 0.85rem; font-weight: 700; color: #64748b; }
+.resume-item p { margin-top: 10px; font-size: 0.95rem; }
+
 /* SKILLS */
-.skills-container { max-width: 800px; margin: 0 auto; }
+.skills-container { max-width: 800px; margin: 40px auto 0; }
 .skill-bar-wrapper { margin-bottom: 25px; }
 .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
 .progress-bg { background: #e2e8f0; height: 12px; border-radius: 10px; overflow: hidden; }
@@ -76,14 +85,9 @@ body.dark-theme .progress-bg { background: #334155; }
 body.dark-theme .progress-fill { background: var(--accent); }
 
 /* PROJECTS */
-.portfolio-grid { 
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 40px; 
-    max-width: 1000px; 
-    margin: 0 auto; 
-}
-.project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
+.project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+.project:hover { transform: translateY(-5px); }
 .project img { width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: 0.5s; }
 .project img:hover { transform: scale(1.05); }
 .project-content { padding: 20px; text-align: center; }
@@ -93,7 +97,7 @@ body.dark-theme .progress-fill { background: var(--accent); }
 .contact-actions { display: flex; gap: 10px; margin-bottom: 30px; justify-content: center; width: 100%; }
 .contact-actions .btn { flex: 1; justify-content: center; font-size: 0.95rem; }
 
-/* MOBILE RESPONSIVE */
+/* MOBILE RESPONSIVE FIXES */
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     .nav-links {
@@ -104,17 +108,28 @@ body.dark-theme .progress-fill { background: var(--accent); }
     .nav-links a { margin: 15px 0; font-size: 1.1rem; width: 100%; justify-content: center; margin-left: 0; }
     
     .hero h1 { font-size: 2.5rem; }
+    .resume-grid { grid-template-columns: 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .project.centered { grid-column: span 1; width: 100%; }
     
-    .contact-actions { flex-direction: row !important; } /* Stay in one line on mobile */
+    .contact-actions { flex-direction: row !important; } 
     .contact-actions .btn { padding: 12px 5px; font-size: 0.85rem; }
 }
 
-#scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
+/* MISC STYLES */
 .section-title{ text-align:center; font-family:Montserrat; font-size:2.5rem; margin-bottom:60px; }
 .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
 .card{ background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
+.review-card { background:var(--card); padding:30px; border-radius:12px; border-top:4px solid var(--primary); box-shadow:0 10px 20px rgba(0,0,0,0.05); }
+.reviewer-info { margin-top: 20px; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.lightbox{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; }
+.lightbox img{ max-width:90%; max-height:90%; border: 2px solid white; }
+#scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
+.loader { border: 3px solid rgba(0,0,0,0.1); border-top: 3px solid #000; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: none; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+#success-msg { display: none; background: #10b981; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: 600; text-align: center;}
+footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; margin-top: 50px;}
+form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; background: var(--card); color: var(--text); font-family: Inter; }
 </style>
 </head>
 <body>
@@ -126,6 +141,7 @@ body.dark-theme .progress-fill { background: var(--accent); }
         <a href="#profile"><i class="fas fa-user-tie"></i> Profile</a>
         <a href="#expertise"><i class="fas fa-brain"></i> Expertise</a>
         <a href="#projects"><i class="fas fa-drafting-compass"></i> Projects</a>
+        <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
         <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
         <i class="fas fa-moon theme-toggle" id="themeIcon" style="margin-left:20px; cursor:pointer;"></i>
     </div>
@@ -145,20 +161,46 @@ body.dark-theme .progress-fill { background: var(--accent); }
 
 <section class="section" id="profile">
     <h2 class="section-title">Professional Profile</h2>
-    <p style="max-width:800px; margin:auto; text-align:center; line-height:1.8;">
+    <p style="max-width:800px; margin:auto; text-align:center; line-height:1.8; margin-bottom: 60px;">
         Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
     </p>
-</section>
 
-<section class="section" id="skills">
-    <h2 class="section-title">Technical Proficiency</h2>
+    <div class="resume-grid">
+        <div class="resume-column">
+            <h3>Experience</h3>
+            <div class="resume-item">
+                <h4>Civil Engineering Specialist</h4>
+                <span>2022 - Present</span>
+                <p>Specializing in AutoCAD drafting and structural detailing for residential and commercial projects.</p>
+            </div>
+            <div class="resume-item">
+                <h4>Lead Graphic Designer</h4>
+                <span>2021 - Present</span>
+                <p>Developing professional brand identities, marketing assets, and modern digital layouts.</p>
+            </div>
+        </div>
+        <div class="resume-column">
+            <h3>Education</h3>
+            <div class="resume-item">
+                <h4>BSc. Civil Engineering</h4>
+                <span>In Progress</span>
+                <p>Focusing on structural analysis, soil mechanics, and construction management.</p>
+            </div>
+            <div class="resume-item">
+                <h4>German Language Certification</h4>
+                <span>B1 Level</span>
+                <p>Advanced proficiency in German language, now providing tutoring for academic candidates.</p>
+            </div>
+        </div>
+    </div>
+
     <div class="skills-container">
         <div class="skill-bar-wrapper">
             <div class="skill-info"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
             <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
         </div>
         <div class="skill-bar-wrapper">
-            <div class="skill-info"><span>Graphic Design (Branding/Layout)</span><span>88%</span></div>
+            <div class="skill-info"><span>Graphic Design (Branding)</span><span>88%</span></div>
             <div class="progress-bg"><div class="progress-fill" style="width: 88%;"></div></div>
         </div>
         <div class="skill-bar-wrapper">
@@ -181,16 +223,30 @@ body.dark-theme .progress-fill { background: var(--accent); }
     <h2 class="section-title">Featured Projects</h2>
     <div class="portfolio-grid">
         <div class="project">
-            <img src="projects/projects/project1.jpg">
+            <img src="projects/projects/project1.jpg" class="gallery-img">
             <div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design and digital assets.</p></div>
         </div>
         <div class="project">
-            <img src="projects/projects/project2.jpg">
+            <img src="projects/projects/project2.jpg" class="gallery-img">
             <div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction site.</p></div>
         </div>
         <div class="project centered">
-            <img src="projects/projects/project3.jpg">
+            <img src="projects/projects/project3.jpg" class="gallery-img">
             <div class="project-content"><h3>Engineering Visualization</h3><p>Engineering concept visualization used to present building design layout.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="reviews">
+    <h2 class="section-title">Client Testimonials</h2>
+    <div class="grid">
+        <div class="review-card">
+            <p>"Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."</p>
+            <div class="reviewer-info"><i class="fas fa-user-circle"></i> Site Engineer, Nairobi</div>
+        </div>
+        <div class="review-card">
+            <p>"Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."</p>
+            <div class="reviewer-info"><i class="fas fa-user-circle"></i> Marketing Director</div>
         </div>
     </div>
 </section>
@@ -203,33 +259,66 @@ body.dark-theme .progress-fill { background: var(--accent); }
             <a href="tel:+254742409512" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call Me</a>
         </div>
         <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
-            <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-            <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-            <textarea name="message" rows="5" placeholder="Tell me about your project..." required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
-            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message</button>
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                <span id="btn-text">Send Message</span>
+                <div class="loader" id="btn-loader"></div>
+            </button>
         </form>
+        <div id="success-msg">✅ Message Sent Successfully!</div>
     </div>
 </section>
 
+<div class="lightbox" id="lightbox"><img id="lightbox-img"></div>
 <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
+<footer>
+    <p>© <span id="year"></span> Engineer Brian Magothe</p>
+</footer>
+
 <script>
+// MOBILE MENU
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-list');
 menuToggle.onclick = () => { navLinks.classList.toggle('active'); };
-
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.onclick = () => { navLinks.classList.remove('active'); };
 });
 
+// THEME & YEAR
 const themeIcon=document.getElementById("themeIcon");
 themeIcon.onclick=()=>{
   document.body.classList.toggle("dark-theme");
   themeIcon.classList.toggle("fa-moon"); themeIcon.classList.toggle("fa-sun");
 }
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// LIGHTBOX & SCROLL
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.gallery-img').forEach(image => {
+  image.onclick = () => { lightbox.style.display = 'flex'; lightboxImg.src = image.src; };
+});
+lightbox.onclick = () => { lightbox.style.display = 'none'; };
 
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 window.onscroll = () => { scrollTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none"; };
 scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+// FORM
+const contactForm = document.getElementById('contact-form');
+contactForm.onsubmit = async (e) => {
+    e.preventDefault();
+    document.getElementById('btn-text').style.display = 'none';
+    document.getElementById('btn-loader').style.display = 'block';
+    const formData = new FormData(contactForm);
+    try {
+        const response = await fetch(contactForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+        if (response.ok) { document.getElementById('success-msg').style.display = 'block'; contactForm.reset(); }
+    } catch (error) { alert("Error."); }
+    finally { document.getElementById('btn-text').style.display = 'block'; document.getElementById('btn-loader').style.display = 'none'; }
+};
 </script>
 </body></html>
