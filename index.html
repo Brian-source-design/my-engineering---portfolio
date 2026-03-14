@@ -21,7 +21,7 @@ font-family:Inter;background:var(--bg);color:var(--text);scroll-behavior:smooth;
 
 .section { scroll-margin-top: 70px; padding: 100px 10%; }
 
-/* NAVBAR & HAMBURGER */
+/* NAVBAR & UI CONTROLS */
 nav{
 display:flex;justify-content:space-between;align-items:center;
 padding:1rem 5%; background:var(--card);
@@ -34,6 +34,16 @@ font-family:Montserrat;font-weight:700;font-size:20px;
 }
 .logo img{ height:40px; animation:spinLogo 10s linear infinite; }
 @keyframes spinLogo{ 0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)} }
+
+.nav-right-controls { display: flex; align-items: center; gap: 20px; }
+
+.theme-toggle { 
+    font-size: 1.2rem; 
+    cursor: pointer; 
+    color: var(--text); 
+    transition: 0.3s;
+}
+.theme-toggle:hover { color: var(--accent); transform: scale(1.1); }
 
 .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
 
@@ -161,14 +171,17 @@ form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; bor
 
 <nav>
     <div class="logo"><img src="logo.png">ENG. BRIAN MAGOTHE</div>
-    <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
-    <div class="nav-links" id="nav-list">
-        <a href="#profile"><i class="fas fa-user-tie"></i> Profile</a>
-        <a href="#expertise"><i class="fas fa-brain"></i> Expertise</a>
-        <a href="#projects"><i class="fas fa-drafting-compass"></i> Projects</a>
-        <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
-        <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
-        <i class="fas fa-moon theme-toggle" id="themeIcon" style="margin-left:20px; cursor:pointer;"></i>
+    
+    <div class="nav-right-controls">
+        <div class="nav-links" id="nav-list">
+            <a href="#profile"><i class="fas fa-user-tie"></i> Profile</a>
+            <a href="#expertise"><i class="fas fa-brain"></i> Expertise</a>
+            <a href="#projects"><i class="fas fa-drafting-compass"></i> Projects</a>
+            <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
+            <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
+        </div>
+        <i class="fas fa-moon theme-toggle" id="themeIcon"></i>
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
     </div>
 </nav>
 
@@ -324,13 +337,15 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     link.onclick = () => { navLinks.classList.remove('active'); };
 });
 
-// THEME & YEAR
-const themeIcon=document.getElementById("themeIcon");
-themeIcon.onclick=()=>{
-  document.body.classList.toggle("dark-theme");
-  themeIcon.classList.toggle("fa-moon"); themeIcon.classList.toggle("fa-sun");
-}
-document.getElementById("year").textContent=new Date().getFullYear();
+// THEME TOGGLE (OUTSIDE MENU)
+const themeIcon = document.getElementById("themeIcon");
+themeIcon.onclick = () => {
+    document.body.classList.toggle("dark-theme");
+    themeIcon.classList.toggle("fa-moon"); 
+    themeIcon.classList.toggle("fa-sun");
+};
+
+document.getElementById("year").textContent = new Date().getFullYear();
 
 // LIGHTBOX & SCROLL
 const lightbox = document.getElementById('lightbox');
