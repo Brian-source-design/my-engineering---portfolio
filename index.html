@@ -4,12 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Brian Magothe | Civil Engineer & AutoCAD Specialist</title>
-
-<meta name="description" content="Portfolio of Brian Magothe – Civil Engineering specialist, AutoCAD designer, graphic designer and German tutor in Kenya.">
+<title>Brian Magothe | Civil Engineer</title>
 
 <link rel="icon" href="favicon-32x32.png">
 
@@ -18,8 +15,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ---------- VARIABLES ---------- */
 
 :root{
 
@@ -30,11 +25,7 @@
 --text:#0f172a;
 --card:#ffffff;
 
---heroText:#ffffff;
-
 }
-
-/* ---------- DARK MODE ---------- */
 
 body.dark-theme{
 
@@ -43,8 +34,6 @@ body.dark-theme{
 --card:#1e293b;
 
 }
-
-/* ---------- BASE ---------- */
 
 *{
 margin:0;
@@ -62,7 +51,7 @@ transition:0.3s;
 
 }
 
-/* ---------- NAVBAR ---------- */
+/* NAVBAR */
 
 nav{
 
@@ -71,6 +60,7 @@ justify-content:space-between;
 align-items:center;
 
 padding:1rem 10%;
+
 background:var(--card);
 
 position:sticky;
@@ -84,8 +74,28 @@ box-shadow:0 2px 10px rgba(0,0,0,0.05);
 
 .logo{
 
+display:flex;
+align-items:center;
+gap:12px;
+
 font-family:Montserrat;
 font-weight:700;
+font-size:20px;
+
+}
+
+.logo img{
+
+height:40px;
+
+animation:spinLogo 10s linear infinite;
+
+}
+
+@keyframes spinLogo{
+
+0%{transform:rotateY(0deg)}
+100%{transform:rotateY(360deg)}
 
 }
 
@@ -105,7 +115,7 @@ cursor:pointer;
 
 }
 
-/* ---------- HERO ---------- */
+/* HERO */
 
 .hero{
 
@@ -136,13 +146,14 @@ color:white;
 
 padding:0 10%;
 
+position:relative;
+
 }
 
 .hero h1{
 
 font-size:4rem;
 font-family:Montserrat;
-
 text-shadow:2px 2px 10px black;
 
 }
@@ -151,20 +162,17 @@ text-shadow:2px 2px 10px black;
 
 margin-top:15px;
 max-width:750px;
-
 font-size:1.2rem;
-
 text-shadow:1px 1px 6px black;
 
 }
 
-/* ---------- HERO BUTTONS ---------- */
+/* BUTTONS */
 
 .btn{
 
 padding:14px 30px;
 border-radius:8px;
-
 text-decoration:none;
 font-weight:700;
 
@@ -190,7 +198,7 @@ color:#1e3a8a;
 
 }
 
-/* ---------- SCROLL INDICATOR ---------- */
+/* SCROLL ARROW */
 
 .scroll-indicator{
 
@@ -198,19 +206,24 @@ position:absolute;
 bottom:30px;
 
 font-size:2rem;
-animation:scroll 2s infinite;
+color:white;
+
+cursor:pointer;
+
+animation:bounce 2s infinite;
+transition:opacity 0.4s;
 
 }
 
-@keyframes scroll{
+@keyframes bounce{
 
 0%{transform:translateY(0)}
-50%{transform:translateY(10px)}
+50%{transform:translateY(12px)}
 100%{transform:translateY(0)}
 
 }
 
-/* ---------- SECTIONS ---------- */
+/* SECTIONS */
 
 .section{
 
@@ -222,14 +235,13 @@ padding:100px 10%;
 
 text-align:center;
 font-family:Montserrat;
-
 font-size:2.5rem;
 
 margin-bottom:60px;
 
 }
 
-/* ---------- PROFILE ---------- */
+/* PROFILE */
 
 .profile{
 
@@ -240,7 +252,7 @@ line-height:1.8;
 
 }
 
-/* ---------- GRID ---------- */
+/* GRID */
 
 .grid{
 
@@ -250,7 +262,7 @@ gap:30px;
 
 }
 
-/* ---------- CARDS ---------- */
+/* CARDS */
 
 .card{
 
@@ -263,7 +275,7 @@ box-shadow:0 10px 20px rgba(0,0,0,0.05);
 
 }
 
-/* ---------- PORTFOLIO ---------- */
+/* PROJECTS */
 
 .portfolio{
 
@@ -297,7 +309,7 @@ padding:20px;
 
 }
 
-/* ---------- REVIEWS ---------- */
+/* REVIEWS */
 
 .reviews{
 
@@ -318,7 +330,7 @@ border-top:4px solid var(--primary);
 
 }
 
-/* ---------- LIGHTBOX ---------- */
+/* LIGHTBOX */
 
 .lightbox{
 
@@ -346,7 +358,7 @@ max-height:90%;
 
 }
 
-/* ---------- CONTACT ---------- */
+/* CONTACT */
 
 form input,
 form textarea{
@@ -364,7 +376,7 @@ color:var(--text);
 
 }
 
-/* ---------- FOOTER ---------- */
+/* FOOTER */
 
 footer{
 
@@ -372,7 +384,6 @@ background:#0f172a;
 color:white;
 
 text-align:center;
-
 padding:60px 10%;
 
 }
@@ -393,7 +404,10 @@ color:white;
 
 <nav>
 
-<div class="logo">ENG. BRIAN MAGOTHE</div>
+<div class="logo">
+<img src="logo.png">
+ENG. BRIAN MAGOTHE
+</div>
 
 <div>
 
@@ -421,13 +435,17 @@ Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • Germa
 
 <a href="#contact" class="btn btn-primary">Connect With Me</a>
 
-<a href="CV_Brian_Magothe.pdf" class="btn btn-light">
+<a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-light">
+<i class="fa fa-eye"></i> Preview CV
+</a>
+
+<a href="CV_Brian_Magothe.pdf" download class="btn btn-primary">
 <i class="fa fa-download"></i> Download CV
 </a>
 
 </div>
 
-<div class="scroll-indicator">
+<div class="scroll-indicator" id="scrollArrow">
 <i class="fas fa-angle-down"></i>
 </div>
 
@@ -439,11 +457,10 @@ Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • Germa
 
 <p class="profile">
 
-Brian Magothe is a civil engineering specialist with strong expertise in AutoCAD drafting, structural detailing and engineering visualization. 
-He has worked on a variety of design projects including construction layouts, structural drawings and visual engineering presentations.
+Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. 
+He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
 
-Brian also provides professional graphic design services for businesses and individuals, creating modern brand identities and visual content. 
-In addition, he offers German language tutoring for students and professionals preparing for international study and career opportunities.
+Brian also works in graphic design, creating brand identities and marketing visuals, and provides German tutoring for students and professionals pursuing international academic and career opportunities.
 
 </p>
 
@@ -457,17 +474,17 @@ In addition, he offers German language tutoring for students and professionals p
 
 <div class="card">
 <h3>AutoCAD Engineering</h3>
-<p>High precision 2D and 3D drafting for civil engineering, construction layouts and structural detailing.</p>
+<p>Precision engineering drafting for structural and construction designs.</p>
 </div>
 
 <div class="card">
 <h3>Graphic Design</h3>
-<p>Brand identity design, logos, marketing graphics and digital visual content for businesses.</p>
+<p>Modern branding, logo creation and visual communication design.</p>
 </div>
 
 <div class="card">
 <h3>German Tutor</h3>
-<p>Professional German lessons for beginners and intermediate learners preparing for academic or professional opportunities.</p>
+<p>Professional German language lessons for academic and career preparation.</p>
 </div>
 
 </div>
@@ -481,54 +498,27 @@ In addition, he offers German language tutoring for students and professionals p
 <div class="portfolio">
 
 <div class="project">
-
-<img src="projects/Graphic Design Photo 1.jpg" loading="lazy">
-
+<img src="projects/project1.jpg">
 <div class="project-content">
-
 <h3>Brand Identity Design</h3>
-
-<p>
-A complete branding design project including logo creation, brand color development and marketing visuals for a modern business brand.
-The project focused on creating a clean and memorable visual identity suitable for both digital and print media.
-</p>
-
+<p>Complete branding project including logo design, color systems and digital marketing materials.</p>
 </div>
-
 </div>
 
 <div class="project">
-
-<img src="projects/Auto Cad design Photo 2.jpg" loading="lazy">
-
+<img src="projects/project2.jpg">
 <div class="project-content">
-
 <h3>Structural Layout Drafting</h3>
-
-<p>
-Detailed AutoCAD structural drawing developed for a building project. 
-The design included precise measurements, structural components and engineering layout planning to support construction accuracy.
-</p>
-
+<p>Detailed AutoCAD structural drawing prepared for a construction planning project.</p>
 </div>
-
 </div>
 
 <div class="project">
-
-<img src="projects/AutoCad design Photo 1.jpg" loading="lazy">
-
+<img src="projects/project3.jpg">
 <div class="project-content">
-
-<h3>Engineering Design Visualization</h3>
-
-<p>
-Engineering visualization created to demonstrate the structure and layout of a construction design.
-The project focused on clear presentation of engineering concepts and accurate technical representation.
-</p>
-
+<h3>Engineering Visualization</h3>
+<p>Engineering concept visualization used to present building design layout and structure.</p>
 </div>
-
 </div>
 
 </div>
@@ -542,24 +532,15 @@ The project focused on clear presentation of engineering concepts and accurate t
 <div class="reviews">
 
 <div class="review">
-
-<p>"Brian delivered very precise AutoCAD drawings for our project. His attention to detail was excellent."</p>
-<strong>Project Client</strong>
-
+<p>"Brian delivered very accurate AutoCAD drawings for our building project."</p>
 </div>
 
 <div class="review">
-
-<p>"Very professional graphic design work. The branding he created helped improve our business image."</p>
-<strong>Business Owner</strong>
-
+<p>"Excellent graphic design work. Very professional."</p>
 </div>
 
 <div class="review">
-
-<p>"Great German tutor with clear explanations and structured lessons."</p>
-<strong>Student</strong>
-
+<p>"Great German tutor with very clear explanations."</p>
 </div>
 
 </div>
@@ -574,25 +555,17 @@ The project focused on clear presentation of engineering concepts and accurate t
 
 <h2 class="section-title">Contact</h2>
 
-<form action="https://formspree.io/f/mdawzobw" method="POST">
+<form>
 
-<input type="text" name="name" placeholder="Full Name" required>
+<input type="text" placeholder="Full Name">
 
-<input type="email" name="email" placeholder="Email Address" required>
+<input type="email" placeholder="Email Address">
 
-<textarea name="message" rows="5" placeholder="Project Details"></textarea>
+<textarea rows="5" placeholder="Project Details"></textarea>
 
 <button class="btn btn-primary" style="width:100%">Send Message</button>
 
 </form>
-
-<br>
-
-<a href="https://wa.me/254742409512" class="btn btn-primary" style="width:100%;justify-content:center">
-
-<i class="fab fa-whatsapp"></i> Contact via WhatsApp
-
-</a>
 
 </section>
 
@@ -600,9 +573,8 @@ The project focused on clear presentation of engineering concepts and accurate t
 
 <div class="social">
 
-<a href="https://www.linkedin.com/in/brian-mathenge-7b4a423b6"><i class="fab fa-linkedin"></i></a>
-
-<a href="https://www.instagram.com/iconic._brian/"><i class="fab fa-instagram"></i></a>
+<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>
+<a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
 
 </div>
 
@@ -628,27 +600,27 @@ themeIcon.classList.replace("fa-sun","fa-moon");
 
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* LIGHTBOX */
+/* Scroll arrow */
 
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
+const arrow=document.getElementById("scrollArrow");
 
-document.querySelectorAll(".project img").forEach(img=>{
+arrow.onclick=()=>{
 
-img.onclick=()=>{
+document.querySelector("#profile").scrollIntoView({
+behavior:"smooth"
+});
 
-lightbox.style.display="flex";
-lightboxImg.src=img.src;
+}
 
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>100){
+arrow.style.opacity="0";
+}else{
+arrow.style.opacity="1";
 }
 
 });
-
-lightbox.onclick=()=>{
-
-lightbox.style.display="none";
-
-}
 
 </script>
 
