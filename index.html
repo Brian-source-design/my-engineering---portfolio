@@ -58,39 +58,37 @@ background-size:cover;background-position:center;
 padding:14px 30px; border-radius:8px; text-decoration:none; font-weight:700;
 display:inline-flex; align-items:center; gap:10px; margin:15px 10px;
 }
-.btn-primary{ background:#FFCC00; color:black; border:none; cursor:pointer; font-family:Inter; }
+.btn-primary{ background:#FFCC00; color:black; border:none; cursor:pointer; }
 .btn-light{ background:white; color:#1e3a8a; }
 
 /* SKILLS SECTION */
 .skills-container { max-width: 800px; margin: 0 auto; }
-.skill-bar-wrapper { margin-bottom: 20px; }
+.skill-bar-wrapper { margin-bottom: 25px; }
 .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
 .progress-bg { background: #e2e8f0; height: 12px; border-radius: 10px; overflow: hidden; }
-.progress-fill { background: var(--primary); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
+.progress-fill { background: var(--primary); height: 100%; border-radius: 10px; transition: width 1.5s ease; }
 body.dark-theme .progress-bg { background: #334155; }
 body.dark-theme .progress-fill { background: var(--accent); }
 
-/* GRID & CARDS */
-.section-title{ text-align:center; font-family:Montserrat; font-size:2.5rem; margin-bottom:60px; }
-.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
-.card{ background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
-
 /* REVIEWS */
-.review{ background:var(--card); padding:25px; border-radius:12px; border-top:4px solid var(--primary); position: relative; }
-.review i.quote-icon { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; display: block; }
-.client-name { margin-top: 15px; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
-
-/* LIGHTBOX */
-.lightbox{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; }
-.lightbox img{ max-width:90%; max-height:90%; border: 2px solid white; }
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+.review-card { background:var(--card); padding:30px; border-radius:12px; border-top:4px solid var(--primary); box-shadow:0 10px 20px rgba(0,0,0,0.05); }
+.review-card i.fa-quote-left { color: var(--accent); font-size: 1.4rem; margin-bottom: 15px; display: block; }
+.reviewer-info { margin-top: 20px; display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.9rem; }
+.reviewer-info i { color: var(--primary); font-size: 1.2rem; }
+body.dark-theme .reviewer-info i { color: var(--accent); }
 
 /* CONTACT */
-.contact-form-container { max-width: 600px; margin: 0 auto; text-align: center; }
+.contact-container { max-width: 600px; margin: 0 auto; text-align: center; }
 form input, form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; background: var(--card); color: var(--text); font-family: Inter; }
 
 /* FOOTER */
 footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; }
 .social a{ font-size:1.8rem; margin:0 15px; color:white; }
+
+/* LIGHTBOX */
+.lightbox{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; }
+.lightbox img{ max-width:90%; max-height:90%; border: 2px solid white; }
 </style>
 </head>
 <body>
@@ -112,31 +110,31 @@ footer{ background:#0f172a; color:white; text-align:center; padding:60px 10%; }
 <p>Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor</p>
 <div>
 <a href="#contact" class="btn btn-primary">Connect With Me</a>
-<a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-light"><i class="fa fa-eye"></i> Preview</a>
-<a href="CV_Brian_Magothe.pdf" download class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
+<a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-light"><i class="fa fa-eye"></i> Preview CV</a>
+<a href="CV_Brian_Magothe.pdf" download class="btn btn-primary"><i class="fa fa-download"></i> Download CV</a>
 </div>
 </header>
 
 <section class="section" id="profile">
 <h2 class="section-title">Professional Profile</h2>
-<p style="max-width:800px; margin:auto; text-align:center; line-height:1.8;">
-Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He provides German tutoring and graphic design services, bridging the gap between technical precision and creative communication.
+<p class="profile">
+Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
 </p>
 </section>
 
 <section class="section" id="skills">
-<h2 class="section-title">Technical Skills</h2>
+<h2 class="section-title">Technical Proficiency</h2>
 <div class="skills-container">
     <div class="skill-bar-wrapper">
         <div class="skill-info"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
         <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
     </div>
     <div class="skill-bar-wrapper">
-        <div class="skill-info"><span>Graphic Design & Branding</span><span>85%</span></div>
-        <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
+        <div class="skill-info"><span>Graphic Design (Branding/Layout)</span><span>88%</span></div>
+        <div class="progress-bg"><div class="progress-fill" style="width: 88%;"></div></div>
     </div>
     <div class="skill-bar-wrapper">
-        <div class="skill-info"><span>German Language (Instruction)</span><span>90%</span></div>
+        <div class="skill-info"><span>German Language Instruction</span><span>90%</span></div>
         <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
     </div>
 </div>
@@ -152,54 +150,51 @@ Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting,
 </section>
 
 <section class="section" id="projects">
-<h2 class="section-title">Projects</h2>
-<div class="grid">
-<div class="card" style="padding:0; overflow:hidden;">
-    <img src="projects/projects/project1.jpg" class="gallery-img" style="width:100%; cursor:pointer;">
-    <div style="padding:20px;"><h3>Brand Identity</h3><p>Logo design and digital assets.</p></div>
-</div>
-<div class="card" style="padding:0; overflow:hidden;">
-    <img src="projects/projects/project2.jpg" class="gallery-img" style="width:100%; cursor:pointer;">
-    <div style="padding:20px;"><h3>Structural Layout</h3><p>AutoCAD construction plans.</p></div>
-</div>
+<h2 class="section-title">Featured Projects</h2>
+<div class="portfolio">
+<div class="project"><img src="projects/projects/project1.jpg" class="gallery-img"><div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design and digital assets.</p></div></div>
+<div class="project"><img src="projects/projects/project2.jpg" class="gallery-img"><div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction site.</p></div></div>
 </div>
 </section>
 
 <section class="section" id="reviews">
-<h2 class="section-title">Client Reviews</h2>
-<div class="grid">
-<div class="review">
-    <i class="fas fa-quote-left quote-icon"></i>
-    <p>"Brian delivered very accurate AutoCAD drawings for our building project. Highly recommended!"</p>
-    <div class="client-name"><i class="fas fa-user-circle"></i> Project Architect</div>
-</div>
-<div class="review">
-    <i class="fas fa-quote-left quote-icon"></i>
-    <p>"Excellent graphic design work. He really understood our brand identity perfectly."</p>
-    <div class="client-name"><i class="fas fa-user-circle"></i> Startup Founder</div>
-</div>
-<div class="review">
-    <i class="fas fa-quote-left quote-icon"></i>
-    <p>"Great German tutor with very clear explanations. I passed my A1 exam thanks to him!"</p>
-    <div class="client-name"><i class="fas fa-user-circle"></i> Language Student</div>
-</div>
+<h2 class="section-title">Client Testimonials</h2>
+<div class="reviews-grid">
+    <div class="review-card">
+        <i class="fas fa-quote-left"></i>
+        <p>"Brian delivered very accurate AutoCAD drawings for our building project. His attention to detail is top-tier."</p>
+        <div class="reviewer-info"><i class="fas fa-user-circle"></i> Site Engineer, Nairobi</div>
+    </div>
+    <div class="review-card">
+        <i class="fas fa-quote-left"></i>
+        <p>"Excellent graphic design work. He took our rough concept and turned it into a professional brand identity."</p>
+        <div class="reviewer-info"><i class="fas fa-user-circle"></i> Marketing Director</div>
+    </div>
+    <div class="review-card">
+        <i class="fas fa-quote-left"></i>
+        <p>"Great German tutor with very clear explanations. He made complex grammar feel very simple."</p>
+        <div class="reviewer-info"><i class="fas fa-user-circle"></i> B1 Candidate</div>
+    </div>
 </div>
 </section>
 
 <div class="lightbox" id="lightbox"><img id="lightbox-img"></div>
 
 <section class="section" id="contact">
-<h2 class="section-title">Contact Me</h2>
-<div class="contact-form-container">
-    <a href="https://wa.me/254742409512" class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom:30px;">
-    <i class="fab fa-whatsapp"></i> Join WhatsApp
+<h2 class="section-title">Get In Touch</h2>
+<div class="contact-container">
+    <a href="https://wa.me/254742409512" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:30px;">
+    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
     </a>
     <form>
     <input type="text" placeholder="Full Name" required>
     <input type="email" placeholder="Email Address" required>
-    <textarea rows="5" placeholder="Project Details" required></textarea>
-    <div style="display:flex; justify-content:center;">
-        <button class="btn btn-primary" style="width:100%; font-weight:900; text-transform:uppercase; letter-spacing:1px;">Send Message</button>
+    <textarea rows="5" placeholder="Tell me about your project..." required></textarea>
+    
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <button type="submit" class="btn btn-primary" style="width:100%; font-weight:900; text-transform:uppercase; letter-spacing:1px; padding: 18px;">
+            Send Message
+        </button>
     </div>
     </form>
 </div>
@@ -216,15 +211,17 @@ Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting,
 const themeIcon=document.getElementById("themeIcon");
 themeIcon.onclick=()=>{
 document.body.classList.toggle("dark-theme");
-themeIcon.classList.toggle("fa-sun");
-themeIcon.classList.toggle("fa-moon");
+if(document.body.classList.contains("dark-theme")){themeIcon.classList.replace("fa-moon","fa-sun");}else{themeIcon.classList.replace("fa-sun","fa-moon");}
 }
 document.getElementById("year").textContent=new Date().getFullYear();
 
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
-document.querySelectorAll('.gallery-img').forEach(img => {
-  img.onclick = () => { lightbox.style.display = 'flex'; lightboxImg.src = img.src; };
+document.querySelectorAll('.gallery-img').forEach(image => {
+  image.onclick = () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = image.src;
+  };
 });
 lightbox.onclick = () => { lightbox.style.display = 'none'; };
 </script>
