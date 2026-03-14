@@ -19,9 +19,9 @@ body{
 font-family:Inter;background:var(--bg);color:var(--text);scroll-behavior:smooth;transition:0.3s;
 }
 
-.section { scroll-margin-top: 70px; padding: 80px 10%; }
+.section { scroll-margin-top: 70px; padding: 100px 10%; }
 
-/* NAVBAR & HAMBURGER */
+/* NAVBAR & MOBILE MENU */
 nav{
 display:flex;justify-content:space-between;align-items:center;
 padding:1rem 5%; background:var(--card);
@@ -29,20 +29,20 @@ position:sticky;top:0; z-index:1000;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 .logo{
-display:flex;align-items:center;gap:10px;
-font-family:Montserrat;font-weight:700;font-size:18px;
+display:flex;align-items:center;gap:12px;
+font-family:Montserrat;font-weight:700;font-size:20px;
 }
-.logo img{ height:35px; animation:spinLogo 10s linear infinite; }
+.logo img{ height:40px; animation:spinLogo 10s linear infinite; }
 @keyframes spinLogo{ 0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)} }
 
 .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
 
 .nav-links { display: flex; align-items: center; }
 .nav-links a{
-margin-left:20px;text-decoration:none;font-weight:600;color:var(--text);
-display: inline-flex; align-items: center; gap: 5px; font-size: 0.9rem;
+margin-left:25px;text-decoration:none;font-weight:600;color:var(--text);
+display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem;
 }
-nav a i { color: var(--accent); }
+.nav-links a i { color: var(--accent); }
 
 /* HERO */
 .hero{
@@ -52,15 +52,15 @@ background: linear-gradient(to bottom,rgba(0,0,0,0.85),rgba(255,0,0,0.35),rgba(2
 url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070");
 background-size:cover;background-position:center;
 }
-.hero h1{ font-size:3rem; font-family:Montserrat; text-shadow:2px 2px 10px black; }
-.hero p{ margin: 15px 0 30px; max-width:750px; font-size:1.1rem; text-shadow:1px 1px 6px black; }
+.hero h1{ font-size:4rem; font-family:Montserrat; text-shadow:2px 2px 10px black; }
+.hero p{ margin-top:15px; max-width:750px; font-size:1.2rem; text-shadow:1px 1px 6px black; margin-bottom: 30px;}
 
 .hero-btns { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-.hero-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.hero-row { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
 .btn{
-padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:700;
-display:inline-flex; align-items:center; gap:8px; transition: 0.3s;
+padding:14px 30px; border-radius:8px; text-decoration:none; font-weight:700;
+display:inline-flex; align-items:center; gap:10px; transition: 0.3s;
 white-space: nowrap;
 }
 .btn-primary{ background:#FFCC00; color:black; border:none; cursor:pointer; }
@@ -79,58 +79,49 @@ body.dark-theme .progress-fill { background: var(--accent); }
 .portfolio-grid { 
     display: grid; 
     grid-template-columns: repeat(2, 1fr); 
-    gap: 30px; 
+    gap: 40px; 
     max-width: 1000px; 
     margin: 0 auto; 
 }
 .project { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.project img { width: 100%; height: 200px; object-fit: cover; cursor: pointer; }
-.project-content { padding: 15px; text-align: center; }
-.project.centered { grid-column: span 2; justify-self: center; width: 60%; }
+.project img { width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: 0.5s; }
+.project img:hover { transform: scale(1.05); }
+.project-content { padding: 20px; text-align: center; }
+.project.centered { grid-column: span 2; justify-self: center; width: 50%; }
 
-/* CONTACT */
-.contact-actions { display: flex; gap: 10px; margin-bottom: 25px; justify-content: center; width: 100%; }
-.contact-actions .btn { flex: 1; justify-content: center; font-size: 0.9rem; }
+/* CONTACT ACTIONS */
+.contact-actions { display: flex; gap: 10px; margin-bottom: 30px; justify-content: center; width: 100%; }
+.contact-actions .btn { flex: 1; justify-content: center; font-size: 0.95rem; }
 
-/* MOBILE RESPONSIVENESS */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: var(--card);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        display: none; flex-direction: column; width: 100%; background: var(--card);
+        position: absolute; top: 100%; left: 0; padding: 20px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
     .nav-links.active { display: flex; }
-    .nav-links a { margin: 15px 0; font-size: 1.1rem; width: 100%; justify-content: center; }
+    .nav-links a { margin: 15px 0; font-size: 1.1rem; width: 100%; justify-content: center; margin-left: 0; }
     
-    .hero h1 { font-size: 2.2rem; }
+    .hero h1 { font-size: 2.5rem; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .project.centered { grid-column: span 1; width: 100%; }
     
-    .contact-actions { flex-direction: row; } 
-    .contact-actions .btn { padding: 12px 10px; }
+    .contact-actions { flex-direction: row !important; } /* Stay in one line on mobile */
+    .contact-actions .btn { padding: 12px 5px; font-size: 0.85rem; }
 }
 
-/* SCROLL UP & LOADERS */
-#scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; border: none;}
-.loader { border: 3px solid rgba(0,0,0,0.1); border-top: 3px solid #000; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: none; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-#success-msg { display: none; background: #10b981; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: 600; text-align: center;}
+#scrollTopBtn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
+.section-title{ text-align:center; font-family:Montserrat; font-size:2.5rem; margin-bottom:60px; }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+.card{ background:var(--card); padding:30px; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
 </style>
 </head>
 <body>
 
 <nav>
     <div class="logo"><img src="logo.png">ENG. BRIAN MAGOTHE</div>
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
-    </div>
+    <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
     <div class="nav-links" id="nav-list">
         <a href="#profile"><i class="fas fa-user-tie"></i> Profile</a>
         <a href="#expertise"><i class="fas fa-brain"></i> Expertise</a>
@@ -141,134 +132,104 @@ body.dark-theme .progress-fill { background: var(--accent); }
 </nav>
 
 <header class="hero">
-<h1>Brian Magothe</h1>
-<p>Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor</p>
-<div class="hero-btns">
-    <div class="hero-row">
-        <a href="#contact" class="btn btn-primary">Connect With Me</a>
-        <a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-primary"><i class="fa fa-eye"></i> Preview CV</a>
+    <h1>Brian Magothe</h1>
+    <p>Civil Engineering Specialist • AutoCAD Designer • Graphic Designer • German Tutor</p>
+    <div class="hero-btns">
+        <div class="hero-row">
+            <a href="#contact" class="btn btn-primary">Connect With Me</a>
+            <a href="CV_Brian_Magothe.pdf" target="_blank" class="btn btn-primary"><i class="fa fa-eye"></i> Preview CV</a>
+        </div>
+        <a href="CV_Brian_Magothe.pdf" download class="btn btn-light"><i class="fa fa-download"></i> Download CV</a>
     </div>
-    <a href="CV_Brian_Magothe.pdf" download class="btn btn-light"><i class="fa fa-download"></i> Download CV</a>
-</div>
 </header>
 
 <section class="section" id="profile">
-<h2 style="text-align:center; margin-bottom:30px;">Professional Profile</h2>
-<p style="max-width:800px; margin:auto; text-align:center; line-height:1.6;">
-Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization.
-</p>
+    <h2 class="section-title">Professional Profile</h2>
+    <p style="max-width:800px; margin:auto; text-align:center; line-height:1.8;">
+        Brian Magothe is a civil engineering specialist experienced in AutoCAD drafting, structural detailing and engineering visualization. He has contributed to multiple engineering design projects focusing on accurate structural representation and professional construction planning.
+    </p>
 </section>
 
 <section class="section" id="skills">
-<div class="skills-container">
-    <div class="skill-bar-wrapper">
-        <div class="skill-info"><span>AutoCAD Detailing</span><span>95%</span></div>
-        <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
+    <h2 class="section-title">Technical Proficiency</h2>
+    <div class="skills-container">
+        <div class="skill-bar-wrapper">
+            <div class="skill-info"><span>AutoCAD & Structural Detailing</span><span>95%</span></div>
+            <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
+        </div>
+        <div class="skill-bar-wrapper">
+            <div class="skill-info"><span>Graphic Design (Branding/Layout)</span><span>88%</span></div>
+            <div class="progress-bg"><div class="progress-fill" style="width: 88%;"></div></div>
+        </div>
+        <div class="skill-bar-wrapper">
+            <div class="skill-info"><span>German Language Instruction</span><span>90%</span></div>
+            <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
+        </div>
     </div>
-    <div class="skill-bar-wrapper">
-        <div class="skill-info"><span>Graphic Design</span><span>88%</span></div>
-        <div class="progress-bg"><div class="progress-fill" style="width: 88%;"></div></div>
+</section>
+
+<section class="section" id="expertise">
+    <h2 class="section-title">Expertise</h2>
+    <div class="grid">
+        <div class="card"><h3>AutoCAD Engineering</h3><p>Precision engineering drafting for structural and construction designs.</p></div>
+        <div class="card"><h3>Graphic Design</h3><p>Modern branding, logo creation and visual communication design.</p></div>
+        <div class="card"><h3>German Tutor</h3><p>Professional German language lessons for academic and career preparation.</p></div>
     </div>
-</div>
 </section>
 
 <section class="section" id="projects">
-<h2 style="text-align:center; margin-bottom:50px;">Featured Projects</h2>
-<div class="portfolio-grid">
-    <div class="project">
-        <img src="projects/projects/project1.jpg" class="gallery-img">
-        <div class="project-content"><h3>Brand Identity Design</h3><p>Logo design and digital assets.</p></div>
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="portfolio-grid">
+        <div class="project">
+            <img src="projects/projects/project1.jpg">
+            <div class="project-content"><h3>Brand Identity Design</h3><p>Complete branding project including logo design and digital assets.</p></div>
+        </div>
+        <div class="project">
+            <img src="projects/projects/project2.jpg">
+            <div class="project-content"><h3>Structural Layout Drafting</h3><p>Detailed AutoCAD structural drawing prepared for a construction site.</p></div>
+        </div>
+        <div class="project centered">
+            <img src="projects/projects/project3.jpg">
+            <div class="project-content"><h3>Engineering Visualization</h3><p>Engineering concept visualization used to present building design layout.</p></div>
+        </div>
     </div>
-    <div class="project">
-        <img src="projects/projects/project2.jpg" class="gallery-img">
-        <div class="project-content"><h3>Structural Drafting</h3><p>Detailed AutoCAD structural drawing.</p></div>
-    </div>
-    <div class="project centered">
-        <img src="projects/projects/project3.jpg" class="gallery-img">
-        <div class="project-content"><h3>Engineering Visualization</h3><p>Engineering concept visualization.</p></div>
-    </div>
-</div>
 </section>
 
 <section class="section" id="contact">
-<h2 style="text-align:center; margin-bottom:40px;">Get In Touch</h2>
-<div class="contact-container" style="max-width: 500px; margin: auto;">
-    <div class="contact-actions">
-        <a href="https://wa.me/254742409512" class="btn btn-primary">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="tel:+254742409512" class="btn btn-primary">
-            <i class="fas fa-phone-alt"></i> Call Me
-        </a>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container" style="max-width: 600px; margin: auto;">
+        <div class="contact-actions">
+            <a href="https://wa.me/254742409512" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+254742409512" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call Me</a>
+        </div>
+        <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+            <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
+            <textarea name="message" rows="5" placeholder="Tell me about your project..." required style="width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message</button>
+        </form>
     </div>
-    
-    <form id="contact-form" action="https://formspree.io/f/mdawzobw" method="POST">
-        <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-        <input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);">
-        <textarea name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; background:var(--card); color:var(--text);"></textarea>
-        
-        <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; justify-content:center;">
-            <span id="btn-text">Send Message</span>
-            <div class="loader" id="btn-loader"></div>
-        </button>
-    </form>
-    <div id="success-msg">✅ Message Sent! I'll get back to you soon.</div>
-</div>
 </section>
 
 <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-// MOBILE MENU TOGGLE
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-list');
+menuToggle.onclick = () => { navLinks.classList.toggle('active'); };
 
-menuToggle.onclick = () => {
-    navLinks.classList.toggle('active');
-};
-
-// CLOSE MENU ON LINK CLICK
 document.querySelectorAll('.nav-links a').forEach(link => {
-    link.onclick = () => {
-        navLinks.classList.remove('active');
-    };
+    link.onclick = () => { navLinks.classList.remove('active'); };
 });
 
 const themeIcon=document.getElementById("themeIcon");
 themeIcon.onclick=()=>{
   document.body.classList.toggle("dark-theme");
-  themeIcon.classList.toggle("fa-moon");
-  themeIcon.classList.toggle("fa-sun");
+  themeIcon.classList.toggle("fa-moon"); themeIcon.classList.toggle("fa-sun");
 }
 
 const scrollTopBtn = document.getElementById("scrollTopBtn");
-window.onscroll = () => {
-    scrollTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none";
-};
+window.onscroll = () => { scrollTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none"; };
 scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-const contactForm = document.getElementById('contact-form');
-contactForm.onsubmit = async (e) => {
-    e.preventDefault();
-    document.getElementById('btn-text').style.display = 'none';
-    document.getElementById('btn-loader').style.display = 'block';
-    
-    const formData = new FormData(contactForm);
-    try {
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-            document.getElementById('success-msg').style.display = 'block';
-            contactForm.reset();
-        }
-    } catch (error) { alert("Error sending message."); }
-    finally {
-        document.getElementById('btn-text').style.display = 'block';
-        document.getElementById('btn-loader').style.display = 'none';
-    }
-};
 </script>
 </body></html>
